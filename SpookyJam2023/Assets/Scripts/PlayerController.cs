@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public void Damage(int damage)
     {
         _currentHealth -= damage;
-        OnHealthChanged.Invoke(_currentHealth);
+        OnHealthChanged?.Invoke(_currentHealth);
 
         if (_currentHealth <= 0) {
             Dead();
@@ -70,8 +70,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void Dead()
     {
-        Debug.Log("Morido");
-        OnDead.Invoke();
+        OnDead?.Invoke();
     }
     #endregion
 }
