@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour, IDamageable
 {
@@ -11,6 +12,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     private Vector2 _movXZ;
 
     private float _currentHealth;
+
+    public UnityAction<float> OnHealthChanged { get; set; }
+    public UnityAction OnDead { get; set; }
 
     private void Awake()
     {
@@ -57,7 +61,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public void Damage(int damage)
     {
         _currentHealth -= damage;
-        Debug.Log($"Vida: {_currentHealth}");
+        OnHealthChanged.Invoke(_currentHealth);
 
         if (_currentHealth <= 0) {
             Dead();
@@ -67,6 +71,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     public void Dead()
     {
         Debug.Log("Morido");
+        OnDead.Invoke();
     }
     #endregion
 }
