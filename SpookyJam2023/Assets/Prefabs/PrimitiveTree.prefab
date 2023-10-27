@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9222126124780079068}
   - component: {fileID: 5378417374878641025}
   - component: {fileID: 1774448416929107072}
+  - component: {fileID: 8700220132119656185}
   m_Layer: 0
   m_Name: PrimitiveTree
   m_TagString: Untagged
@@ -107,3 +108,19 @@ CapsuleCollider:
   m_Height: 3.28
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: -0.00000008940697}
+--- !u!208 &8700220132119656185
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6568382222554160644}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.6, y: 1.64, z: 0.6}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
