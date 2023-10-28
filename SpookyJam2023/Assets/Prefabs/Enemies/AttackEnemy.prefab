@@ -128,9 +128,9 @@ GameObject:
   - component: {fileID: 71248737902512085}
   - component: {fileID: 4532254081589134900}
   - component: {fileID: 5186979086001833105}
-  - component: {fileID: 7515785512535817940}
+  - component: {fileID: 5997135916883165920}
   m_Layer: 6
-  m_Name: TestEnemy
+  m_Name: AttackEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _statsSO: {fileID: 11400000, guid: 38c0c17efbc1a0348ace8c24c6e8949c, type: 2}
   _maxTimeScared: 3
---- !u!114 &7515785512535817940
+--- !u!114 &5997135916883165920
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -245,6 +245,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5407997301011046096}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69f1f642fc200c345b654b1cbc2b2975, type: 3}
+  m_Script: {fileID: 11500000, guid: ac9c85b5e1aead24384723b2b92b10d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

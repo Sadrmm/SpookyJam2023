@@ -289,6 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemies:
   - {fileID: 5407997301011046096, guid: 7305c236ffa38fb468c172759e086a45, type: 3}
+  - {fileID: 392330537735639794, guid: 57707b4622c1f984f8b55a8313ed8cad, type: 3}
   _maxTimer: 60
   _enemiesContainer: {fileID: 1786763600}
   _enemySpawnAmountCurve:
