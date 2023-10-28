@@ -347,7 +347,8 @@ GameObject:
   - component: {fileID: 4431327110308654504}
   - component: {fileID: 1054516957889816340}
   - component: {fileID: 2715629844421609168}
-  - component: {fileID: 8910654428510861216}
+  - component: {fileID: 2813611032979283070}
+  - component: {fileID: 6012918952776672850}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -433,9 +434,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557f03c87cedf0d49b3424fdf0fad510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _painter: {fileID: 0}
+  _painter: {fileID: 4654337233793045842}
   _statsSO: {fileID: 11400000, guid: 3604067b6dbe2b14c83f157dc037e766, type: 2}
---- !u!114 &8910654428510861216
+--- !u!114 &2813611032979283070
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -456,6 +457,18 @@ MonoBehaviour:
   _projectileSpawn: {fileID: 8799845485104756997}
   _scareAttackKeyCode: 118
   _scare: {fileID: 2095279418594810432}
+--- !u!114 &6012918952776672850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6867746956829909815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a76608ebd727dcc4485bbd4db613b2e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7292245849778972400
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,3 +584,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5625004880733096041}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4654337233793045842 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1046962870462750011, guid: 79b2636eb5cda444e8b40bc344c00a15,
+    type: 3}
+  m_PrefabInstance: {fileID: 5625004880733096041}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e501b90f21b2574c9d17835a193c4f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

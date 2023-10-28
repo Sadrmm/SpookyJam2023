@@ -17,13 +17,15 @@ public class UI_Shop : MonoBehaviour
     [SerializeField]
     public TextMeshProUGUI moneyText;
 
+    //public TextMeshProUGUI upgradeCostText;
+    private Dictionary<Transform, Upgrade.UpgradeType> upgradeTypeDict = new Dictionary<Transform, Upgrade.UpgradeType>();
+
     private const int maxUpgrade = 5;
 
     private void Awake()
     {
         //container = transform.Find("container");
         //shopUpgradeTemplate = transform.Find("shopUpgradeTemplate");
-
         shopUpgradeTemplate.gameObject.SetActive(false);
     }
 
@@ -62,6 +64,8 @@ public class UI_Shop : MonoBehaviour
 
         shopUpgradeTransform.Find("upgradeIcon").GetComponent<Image>().sprite = upgradeSprite;
 
+        
+
         switch (upgradeType)
         {
             case Upgrade.UpgradeType.DamageUpgraded:
@@ -100,6 +104,7 @@ public class UI_Shop : MonoBehaviour
                 Debug.LogError("ni puta idea de mejora: " + upgradeType);
                 break;
         }
+        upgradeTypeDict[shopUpgradeTransform] = upgradeType;
     }
 
     private void TryBuyUpgrade(Upgrade.UpgradeType upgradeType)
@@ -112,6 +117,7 @@ public class UI_Shop : MonoBehaviour
                 {
                     UpgradeStats.moneyAmount = UpgradeStats.moneyAmount - Upgrade.GetCost(upgradeType);
                     UpgradeStats.IndexDamage = Mathf.Min(UpgradeStats.IndexDamage + 1, maxUpgrade);
+                    UpdateCost();
                     UpdateMoneyText();
 
                     Debug.Log("money avaliable: " + UpgradeStats.moneyAmount);
@@ -124,6 +130,7 @@ public class UI_Shop : MonoBehaviour
                 {
                     UpgradeStats.moneyAmount = UpgradeStats.moneyAmount - Upgrade.GetCost(upgradeType);
                     UpgradeStats.IndexRange = Mathf.Min(UpgradeStats.IndexRange + 1, maxUpgrade);
+                    UpdateCost();
                     UpdateMoneyText();
                 }
                 break;
@@ -132,6 +139,7 @@ public class UI_Shop : MonoBehaviour
                 {
                     UpgradeStats.moneyAmount = UpgradeStats.moneyAmount - Upgrade.GetCost(upgradeType);
                     UpgradeStats.IndexLifeSteal = Mathf.Min(UpgradeStats.IndexLifeSteal + 1, maxUpgrade);
+                    UpdateCost();
                     UpdateMoneyText();
                 }
                 break;
@@ -140,6 +148,7 @@ public class UI_Shop : MonoBehaviour
                 {
                     UpgradeStats.moneyAmount = UpgradeStats.moneyAmount - Upgrade.GetCost(upgradeType);
                     UpgradeStats.IndexSpeed = Mathf.Min(UpgradeStats.IndexSpeed + 1, maxUpgrade);
+                    UpdateCost();
                     UpdateMoneyText();
                 }
                 break;
@@ -148,6 +157,7 @@ public class UI_Shop : MonoBehaviour
                 {
                     UpgradeStats.moneyAmount = UpgradeStats.moneyAmount - Upgrade.GetCost(upgradeType);
                     UpgradeStats.IndexScary = Mathf.Min(UpgradeStats.IndexScary + 1, maxUpgrade);
+                    UpdateCost();
                     UpdateMoneyText();
                 }
                 break;
@@ -155,12 +165,24 @@ public class UI_Shop : MonoBehaviour
                 Debug.LogError("ni puta idea de mejora: " + upgradeType);
                 break;
         }
-
     }
 
     private void UpdateMoneyText()
     {
         moneyText.SetText("");
         moneyText.SetText(UpgradeStats.moneyAmount.ToString());
+    }
+
+    private void UpdateCost()
+    {
+        foreach (Transform child in container)
+        {
+            Upgrade.UpgradeType upgradeType;
+            if (upgradeTypeDict.TryGetValue(child, out upgradeType))
+            {
+                TextMeshProUGUI costText = child.Find("upgradeCost").GetComponent<TextMeshProUGUI>();
+                costText.SetText(Upgrade.GetCost(upgradeType).ToString());
+            }
+        }
     }
 }
