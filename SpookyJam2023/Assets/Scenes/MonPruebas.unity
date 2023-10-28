@@ -926,6 +926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _statsSO: {fileID: 11400000, guid: 38c0c17efbc1a0348ace8c24c6e8949c, type: 2}
+  _maxTimeScared: 3
 --- !u!54 &2013705198
 Rigidbody:
   m_ObjectHideFlags: 0
