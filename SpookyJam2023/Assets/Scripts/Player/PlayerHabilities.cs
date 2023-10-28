@@ -11,7 +11,6 @@ public class PlayerHabilities : MonoBehaviour
     private float _lastShotTime;
 
     [Header("Scare Attack")]
-    [SerializeField] KeyCode _scareAttackKeyCode;
     [SerializeField] Scare _scare;
 
     private void Update()
@@ -55,7 +54,7 @@ public class PlayerHabilities : MonoBehaviour
 
     private void HandleScareAttack()
     {
-        if (Input.GetKeyDown(_scareAttackKeyCode)) {
+        if (Input.GetKeyDown(_scare.StatsSO.KeyCode)) {
             _scare.Attack();
         }
     }

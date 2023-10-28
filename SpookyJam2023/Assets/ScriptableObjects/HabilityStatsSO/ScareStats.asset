@@ -15,3 +15,5 @@ MonoBehaviour:
   _damage: 10
   _cooldown: 10
   _range: 5
+  _sprite: {fileID: -11648093, guid: 0aab20acea2389b44b6e0f3b0760c792, type: 3}
+  _keyCode: 118
