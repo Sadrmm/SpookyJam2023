@@ -18,8 +18,6 @@ public class Scare : MonoBehaviour
             return;
         }
 
-        Debug.Log("ataca");
-
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, _statsSO.Range, _enemyLayerMask);
         foreach (Collider collider in hitColliders) {
             IDamageable enemy = collider.GetComponent<IDamageable>();

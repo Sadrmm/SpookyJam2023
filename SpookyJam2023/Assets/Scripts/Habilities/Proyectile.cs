@@ -17,7 +17,6 @@ public class Proyectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log($"collision with: {collision}");
         IDamageable enemy = collision.gameObject.GetComponent<IDamageable>();
 
         if (enemy == null) {
