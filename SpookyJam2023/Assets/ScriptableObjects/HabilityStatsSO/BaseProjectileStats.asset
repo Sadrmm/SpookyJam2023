@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BaseProjectileStats
   m_EditorClassIdentifier: 
   _damage: 5
-  _cooldown: 1
+  _cooldown: 5
   _range: 10
