@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 2715629844421609168}
   - component: {fileID: 4431327110308654504}
   - component: {fileID: 1054516957889816340}
+  - component: {fileID: 1069411670367706873}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -295,3 +296,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &1069411670367706873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6867746956829909815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542befce6bca42a47ab2d7acf03e831d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _statsSO: {fileID: 0}
+  _enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  projectilePrefab: {fileID: 0}
