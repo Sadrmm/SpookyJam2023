@@ -8,7 +8,7 @@ public class Upgrade
     {
         ScaryUpgraded,
         SpeedUpgraded,
-        RangeUpgraded,
+        DamageUpgraded,
         LifeStealUpgraded,
         ProyectileRangeUpgraded
     }
@@ -18,11 +18,11 @@ public class Upgrade
         switch(upgradeType)
         {
             default:
-            case UpgradeType.ScaryUpgraded: return 20;
-            case UpgradeType.SpeedUpgraded: return 6;
-            case UpgradeType.RangeUpgraded: return 15;
-            case UpgradeType.LifeStealUpgraded: return 1;
-            case UpgradeType.ProyectileRangeUpgraded: return 25;
+            case UpgradeType.ScaryUpgraded: return 20 * (UpgradeStats.IndexScary + 1);
+            case UpgradeType.SpeedUpgraded: return 6 * (UpgradeStats.IndexSpeed + 1);
+            case UpgradeType.DamageUpgraded: return 15 * (UpgradeStats.IndexDamage + 1);
+            case UpgradeType.LifeStealUpgraded: return 1 * (UpgradeStats.IndexLifeSteal + 1);
+            case UpgradeType.ProyectileRangeUpgraded: return 25 * (UpgradeStats.IndexRange + 1);
         }
     }
 
@@ -33,7 +33,7 @@ public class Upgrade
             default:
             case UpgradeType.ScaryUpgraded: return GameAssets.i.spriteScary;
             case UpgradeType.SpeedUpgraded: return GameAssets.i.spriteSpeed;
-            case UpgradeType.RangeUpgraded: return GameAssets.i.spriteRange;
+            case UpgradeType.DamageUpgraded: return GameAssets.i.spriteDamage;
             case UpgradeType.LifeStealUpgraded: return GameAssets.i.spriteLifeSteal;
             case UpgradeType.ProyectileRangeUpgraded: return GameAssets.i.spriteShootRange;
         }

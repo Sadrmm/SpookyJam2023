@@ -15,7 +15,7 @@ public class GameAssets : MonoBehaviour
         }
     }
     public Sprite spriteSpeed;
-    public Sprite spriteRange;
+    public Sprite spriteDamage;
     public Sprite spriteLifeSteal;
     public Sprite spriteScary;
     public Sprite spriteShield;

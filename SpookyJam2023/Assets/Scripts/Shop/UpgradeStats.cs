@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UpgradeStats : MonoBehaviour
+public static class UpgradeStats
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static int moneyAmount;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public static int IndexDamage;
+    public static int IndexRange;
+    public static int IndexLifeSteal;
+    public static int IndexSpeed;
+    public static int IndexScary;
 }

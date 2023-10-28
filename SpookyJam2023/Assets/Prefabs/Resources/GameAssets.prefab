@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteSpeed: {fileID: 2013747132, guid: 0aab20acea2389b44b6e0f3b0760c792, type: 3}
-  spriteRange: {fileID: 546951880, guid: 0aab20acea2389b44b6e0f3b0760c792, type: 3}
+  spriteDamage: {fileID: 1974356269, guid: 0aab20acea2389b44b6e0f3b0760c792, type: 3}
   spriteLifeSteal: {fileID: 1958728138, guid: 0aab20acea2389b44b6e0f3b0760c792, type: 3}
   spriteScary: {fileID: -1123471204, guid: 0aab20acea2389b44b6e0f3b0760c792, type: 3}
   spriteShield: {fileID: -61549925, guid: 0aab20acea2389b44b6e0f3b0760c792, type: 3}
