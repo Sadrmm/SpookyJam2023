@@ -8,12 +8,12 @@ public class Enemy : MonoBehaviour, ICharacter, IDamageable, IScareable
     [SerializeField] CharacterStatsSO _statsSO;
     public CharacterStatsSO StatsSO => _statsSO;
 
-    private float _currentHealth;
+    private int _currentHealth;
 
     [SerializeField] float _maxTimeScared;
     private bool _isScared;
 
-    public UnityAction<float> OnHealthChanged { get ; set; }
+    public UnityAction<int> OnHealthChanged { get ; set; }
     public UnityAction OnDead { get; set; }
 
     public bool IsScared => _isScared;

@@ -15,9 +15,9 @@ public class PlayerController : MonoBehaviour, IDamageable, ICharacter
 
     private Vector2 _dir;
 
-    private float _currentHealth;
+    private int _currentHealth;
 
-    public UnityAction<float> OnHealthChanged { get; set; }
+    public UnityAction<int> OnHealthChanged { get; set; }
     public UnityAction OnDead { get; set; }
 
     private void Awake()
