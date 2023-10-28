@@ -4,6 +4,7 @@ public class Scare : MonoBehaviour
 {
     [SerializeField] HabilityStatsSO _statsSO;
     [SerializeField] LayerMask _enemyLayerMask;
+    [SerializeField] float _explosionForce = 10.0f;
 
     private float _nextAttackTime;
 
@@ -18,8 +19,6 @@ public class Scare : MonoBehaviour
             return;
         }
 
-        Debug.Log("ataca");
-
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, _statsSO.Range, _enemyLayerMask);
         foreach (Collider collider in hitColliders) {
             IDamageable enemy = collider.GetComponent<IDamageable>();
@@ -29,6 +28,8 @@ public class Scare : MonoBehaviour
             }
 
             enemy.Damage(_statsSO.Damage);
+            //Push(collider);
+            Forces.PushObject(collider, _explosionForce, transform.position, _statsSO.Range);
 
             IScareable scareable = enemy as IScareable;
 

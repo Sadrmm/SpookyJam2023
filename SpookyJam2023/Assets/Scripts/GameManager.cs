@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         _scaredEnemies.Add(enemyScared);
+        //Debug.Log($"Enemigos asustados: {_scaredEnemies.Count}");
     }
 
     private void RemoveScared(IScareable enemyNotScared)
@@ -85,6 +86,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         _scaredEnemies.Remove(enemyNotScared);
+        //Debug.Log($"Enemigos asustados: {_scaredEnemies.Count}");
     }
 
     private void HandleWaves()
