@@ -64,18 +64,39 @@ public class PaintManager : Singleton<PaintManager>{
         paintMaterial.SetFloat(strengthID, strength);
         paintMaterial.SetFloat(radiusID, radius);
         paintMaterial.SetTexture(textureID, support);
-        paintMaterial.SetColor(colorID, color ?? Color.red);
+        paintMaterial.SetColor(colorID, color ?? Color.black);
         extendMaterial.SetFloat(uvOffsetID, paintable.extendsIslandOffset);
         extendMaterial.SetTexture(uvIslandsID, uvIslands);
 
-        command.SetRenderTarget(mask);
-        command.DrawRenderer(rend, paintMaterial, 0);
+        
+        if (color == null) {
+            RenderTexture temp = RenderTexture.GetTemporary(mask.width, mask.height, 0);
+            temp.filterMode = FilterMode.Bilinear;
+            temp.wrapMode = TextureWrapMode.Repeat;
 
-        command.SetRenderTarget(support);
-        command.Blit(mask, support);
+            command.SetRenderTarget(temp);
+            command.DrawRenderer(rend, paintMaterial, 0);
 
-        command.SetRenderTarget(extend);
-        command.Blit(mask, extend, extendMaterial);
+            command.SetRenderTarget(support);
+            command.Blit(temp, support);
+
+            command.SetRenderTarget(extend);
+            command.Blit(temp, extend, extendMaterial);
+
+            RenderTexture.ReleaseTemporary(temp);
+        }
+        else
+        {
+            command.SetRenderTarget(mask);
+            command.DrawRenderer(rend, paintMaterial, 0);
+
+            command.SetRenderTarget(support);
+            command.Blit(mask, support);
+
+            command.SetRenderTarget(extend);
+            command.Blit(mask, extend, extendMaterial);
+
+        }
 
         Graphics.ExecuteCommandBuffer(command);
         command.Clear();

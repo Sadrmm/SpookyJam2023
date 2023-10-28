@@ -23,6 +23,7 @@ public class Paintable : MonoBehaviour {
     void Start() {
         maskRenderTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
         maskRenderTexture.filterMode = FilterMode.Bilinear;
+        maskRenderTexture.wrapMode = TextureWrapMode.Repeat;
 
         extendIslandsRenderTexture = new RenderTexture(TEXTURE_SIZE, TEXTURE_SIZE, 0);
         extendIslandsRenderTexture.filterMode = FilterMode.Bilinear;

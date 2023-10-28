@@ -7,21 +7,23 @@ using UnityEngine;
 
 public class PaintPercentageController : MonoBehaviour
 {
-    private static float _percentage;
-    
+    public float Percentage { get; private set; }
     private Paintable _paintable;
     [SerializeField] private float _timer = 2;
 
-    public static event Action OnPercentageCalculated;
+    public event Action OnPercentageCalculated;
 
+
+    public static PaintPercentageController Instance;
 
     private void Awake()
     {
-        _paintable = GetComponent<Paintable>();
+        Instance = this;
     }
 
     private void Start()
     {
+        _paintable = GetComponent<Paintable>();
         StartCoroutine(Timer());
     }
 
@@ -45,17 +47,17 @@ public class PaintPercentageController : MonoBehaviour
         int maskPixelNumber = mask.width * mask.height;
         Color[] textureColors = GetPixels(p);
 
-        int redPixels = 0;
+        int targetColorPixels = 0;
         foreach (Color c in textureColors)
         {
-            if (c == Color.red)
+            if (c == Color.black)
             {
-                redPixels++;
+                targetColorPixels++;
             }
         }
-        _percentage = Mathf.InverseLerp(0, maskPixelNumber, redPixels);
+        Percentage = Mathf.InverseLerp(0, maskPixelNumber, targetColorPixels);
 
-        Debug.Log(_percentage);
+        Debug.Log(Percentage);
 
         OnPercentageCalculated?.Invoke();
     }
