@@ -20,4 +20,5 @@ public class GameAssets : MonoBehaviour
     public Sprite spriteScary;
     public Sprite spriteShield;
     public Sprite spriteDash;
+    public Sprite spriteShootRange;
 }
