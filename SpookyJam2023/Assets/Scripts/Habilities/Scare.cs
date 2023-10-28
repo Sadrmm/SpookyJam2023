@@ -3,6 +3,7 @@ using UnityEngine;
 public class Scare : MonoBehaviour
 {
     [SerializeField] HabilityStatsSO _statsSO;
+    public HabilityStatsSO StatsSO => _statsSO;
     [SerializeField] LayerMask _enemyLayerMask;
     [SerializeField] float _explosionForce = 10.0f;
 
