@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] CharacterStatsSO _statsSO;
     private Rigidbody _rb;
 
-    private Vector2 _movXZ;
+    private Vector2 _dir;
 
     private float _currentHealth;
 
@@ -27,8 +27,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     }
     private void Update()
     {
-        _movXZ = new Vector2(Input.GetAxis(HORIZONTAL),
-            Input.GetAxis(VERTICAL));
+        _dir = GetDirectionNormalized();
 
         HandleRotation();
 
@@ -41,16 +40,39 @@ public class PlayerController : MonoBehaviour, IDamageable
         HandleMovement();
     }
 
+    private Vector2 GetDirectionNormalized()
+    {
+        Vector2 dir = Vector2.zero; // -> NEW INPUT SYSTEM
+        if (Input.GetKey(KeyCode.W))
+        {
+            dir.y += 1;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            dir.y -= 1;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            dir.x -= 1;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            dir.x += 1;
+        }
+
+        return dir.normalized;
+    }
+
     private void HandleRotation()
     {
-        Vector3 desiredRotation = new Vector3(_movXZ.x, 0f, _movXZ.y);
+        Vector3 desiredRotation = new Vector3(_dir.x, 0f, _dir.y);
 
         transform.forward = Vector3.Slerp(transform.forward, desiredRotation, Time.deltaTime * _statsSO.RotSpeed);
     }
 
     private void HandleMovement()
     {
-        Vector3 velocity = new Vector3(_movXZ.x, 0f, _movXZ.y);
+        Vector3 velocity = new Vector3(_dir.x, 0f, _dir.y);
         velocity.Normalize();
         velocity *= _statsSO.MoveSpeed;
 
