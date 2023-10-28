@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private const float WIN_PERCENTAGE = 0.95f;
+
     private enum GameState
     {
         Playing,
@@ -45,6 +47,11 @@ public class GameManager : MonoBehaviour
         _currentGameState = GameState.Playing;
 
         _scaredEnemies = new List<IScareable>();
+    }
+
+    private void Start()
+    {
+        PaintPercentageController.Instance.OnPercentageCalculated += PaintPercentageController_OnPercentageCalculated;
     }
 
     private void OnEnable()
@@ -151,4 +158,13 @@ public class GameManager : MonoBehaviour
         _currentGameState = GameState.End;
     }
     #endregion
+
+    private void PaintPercentageController_OnPercentageCalculated(float percentage)
+    {
+        if (percentage > WIN_PERCENTAGE)
+        {
+            EndGame(EndGameConditions.ConqueredMap);
+            PaintPercentageController.Instance.OnPercentageCalculated -= PaintPercentageController_OnPercentageCalculated;
+        }
+    }
 }
