@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] float _maxTimer = 60.0f;
 
     [Header("Enemies Spawn")]
+    [SerializeField] Transform _enemiesContainer;
     [SerializeField] AnimationCurve _enemySpawnAmountCurve;
     [SerializeField] float _timeBtwnWaves = 15.0f;
     [SerializeField] float _minRadiusSpawn = 5.0f;
@@ -51,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        PaintPercentageController.Instance.OnPercentageCalculated += PaintPercentageController_OnPercentageCalculated;
+        //PaintPercentageController.Instance.OnPercentageCalculated += PaintPercentageController_OnPercentageCalculated;
     }
 
     private void OnEnable()
@@ -121,7 +122,6 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < spawnEnemyAmount; i++) {
             float radius = Random.Range(_minRadiusSpawn, _maxRadiusSpawn);
-            Debug.Log(radius);
 
             float x = Mathf.Cos(angle) * radius;
             float y = Mathf.Sin(angle) * radius;
@@ -130,8 +130,18 @@ public class GameManager : MonoBehaviour
                 0f,
                 _playerController.transform.position.z + y);
 
-            GameObject enemyGO = Instantiate(_enemies[Random.Range(0, _enemies.Length)], spawnPos, Quaternion.identity);
+            GameObject enemyGO = Instantiate(_enemies[Random.Range(0, _enemies.Length)], _enemiesContainer);
+            enemyGO.transform.position = spawnPos;
             enemyGO.transform.LookAt(_playerController.transform);
+
+            EnemyAI enemyAI = enemyGO.GetComponent<EnemyAI>();
+
+            if (enemyAI == null) {
+                Debug.LogError($"{enemyGO} does not have EnemyAI script");
+            }
+            else {
+                enemyAI.Init(_playerController.transform);
+            }
 
             angle += spaceBtwnAngles;
         }
@@ -164,7 +174,7 @@ public class GameManager : MonoBehaviour
         if (percentage > WIN_PERCENTAGE)
         {
             EndGame(EndGameConditions.ConqueredMap);
-            PaintPercentageController.Instance.OnPercentageCalculated -= PaintPercentageController_OnPercentageCalculated;
+            //PaintPercentageController.Instance.OnPercentageCalculated -= PaintPercentageController_OnPercentageCalculated;
         }
     }
 }
