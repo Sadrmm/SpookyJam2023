@@ -28,7 +28,8 @@ public class Scare : MonoBehaviour
             }
 
             enemy.Damage(_statsSO.Damage);
-            Push(collider);
+            //Push(collider);
+            Forces.PushObject(collider, _explosionForce, transform.position, _statsSO.Range);
 
             IScareable scareable = enemy as IScareable;
 
@@ -40,16 +41,5 @@ public class Scare : MonoBehaviour
         }
 
         _nextAttackTime = Time.time + _statsSO.Cooldown;
-    }
-
-    private void Push(Collider collider)
-    {
-        Rigidbody rb = collider.GetComponent<Rigidbody>();
-
-        if (rb == null) {
-            return;
-        }
-
-        rb.AddExplosionForce(_explosionForce, transform.position, _statsSO.Range);
     }
 }
