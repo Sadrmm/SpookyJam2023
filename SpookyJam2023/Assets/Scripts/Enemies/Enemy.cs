@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TestEnemy : MonoBehaviour, ICharacter, IDamageable, IScareable
+public class Enemy : MonoBehaviour, ICharacter, IDamageable, IScareable
 {
 
     [SerializeField] CharacterStatsSO _statsSO;

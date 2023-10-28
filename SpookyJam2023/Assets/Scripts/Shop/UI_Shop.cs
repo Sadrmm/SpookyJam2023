@@ -14,7 +14,10 @@ public class UI_Shop : MonoBehaviour
     [SerializeField]
     private Transform shopUpgradeTemplate;
 
-    private int maxUpgrade = 5;
+    [SerializeField]
+    public TextMeshProUGUI moneyText;
+
+    private const int maxUpgrade = 5;
 
     private void Awake()
     {
@@ -25,6 +28,7 @@ public class UI_Shop : MonoBehaviour
 
     private void Start()
     {
+        UpdateMoneyText();
         // putero violento
         CreateUpgradeButton(Upgrade.UpgradeType.DamageUpgraded, Upgrade.GetSprite(Upgrade.UpgradeType.DamageUpgraded), "Damage Increase", "Increase your DAAMGE by an esplentastic 10%!",
             Upgrade.GetCost(Upgrade.UpgradeType.DamageUpgraded), 0);
@@ -59,69 +63,36 @@ public class UI_Shop : MonoBehaviour
         switch (upgradeType)
         {
             case Upgrade.UpgradeType.DamageUpgraded:
-                if(UpgradeStats.IndexDamage >= maxUpgrade) 
-                {
-                    shopUpgradeTransform.Find("offFilter").gameObject.SetActive(true); 
-                }
-                else
-                {
                     shopUpgradeTransform.GetComponent<Button_UI>().ClickFunc = () =>
                     {
                         TryBuyUpgrade(upgradeType);
                     };
-                }
                 break;
             case Upgrade.UpgradeType.ProyectileRangeUpgraded:
-                if (UpgradeStats.IndexRange >= maxUpgrade)
-                {
-                    shopUpgradeTransform.Find("offFilter").gameObject.SetActive(true);
-                }
-                else
-                {
                     shopUpgradeTransform.GetComponent<Button_UI>().ClickFunc = () =>
                     {
                         TryBuyUpgrade(upgradeType);
                     };
-                }
                 break;
             case Upgrade.UpgradeType.LifeStealUpgraded:
-                if (UpgradeStats.IndexLifeSteal >= maxUpgrade)
-                {
-                    shopUpgradeTransform.Find("offFilter").gameObject.SetActive(true);
-                }
-                else
-                {
                     shopUpgradeTransform.GetComponent<Button_UI>().ClickFunc = () =>
                     {
                         TryBuyUpgrade(upgradeType);
                     };
-                }
+
                 break;
             case Upgrade.UpgradeType.SpeedUpgraded:
-                if (UpgradeStats.IndexSpeed >= maxUpgrade)
-                {
-                    shopUpgradeTransform.Find("offFilter").gameObject.SetActive(true);
-                }
-                else
-                {
                     shopUpgradeTransform.GetComponent<Button_UI>().ClickFunc = () =>
                     {
                         TryBuyUpgrade(upgradeType);
                     };
-                }
                 break;
             case Upgrade.UpgradeType.ScaryUpgraded:
-                if (UpgradeStats.IndexScary >= maxUpgrade)
-                {
-                    shopUpgradeTransform.Find("offFilter").gameObject.SetActive(true);
-                }
-                else
-                {
+
                     shopUpgradeTransform.GetComponent<Button_UI>().ClickFunc = () =>
                     {
                         TryBuyUpgrade(upgradeType);
                     };
-                }
                 break;
             default:
                 Debug.LogError("ni puta idea de mejora: " + upgradeType);
@@ -136,24 +107,58 @@ public class UI_Shop : MonoBehaviour
         switch (upgradeType)
         {
             case Upgrade.UpgradeType.DamageUpgraded:
-                UpgradeStats.IndexDamage = Mathf.Min(UpgradeStats.IndexDamage + 1, maxUpgrade);
+                if(UpgradeStats.moneyAmount >= Upgrade.GetCost(upgradeType))
+                {
+                    UpgradeStats.moneyAmount = UpgradeStats.moneyAmount - Upgrade.GetCost(upgradeType);
+                    UpgradeStats.IndexDamage = Mathf.Min(UpgradeStats.IndexDamage + 1, maxUpgrade);
+                    UpdateMoneyText();
+
+                    Debug.Log("money avaliable: " + UpgradeStats.moneyAmount);
+                    Debug.Log("upgrade cost: " + Upgrade.GetCost(upgradeType));
+                }
                 //Debug.Log(UpgradeStats.IndexDamage);
                 break;
             case Upgrade.UpgradeType.ProyectileRangeUpgraded:
-                UpgradeStats.IndexRange = Mathf.Min(UpgradeStats.IndexRange + 1, maxUpgrade);
+                if (UpgradeStats.moneyAmount >= Upgrade.GetCost(upgradeType))
+                {
+                    UpgradeStats.moneyAmount = UpgradeStats.moneyAmount - Upgrade.GetCost(upgradeType);
+                    UpgradeStats.IndexRange = Mathf.Min(UpgradeStats.IndexRange + 1, maxUpgrade);
+                    UpdateMoneyText();
+                }
                 break;
             case Upgrade.UpgradeType.LifeStealUpgraded:
-                UpgradeStats.IndexLifeSteal = Mathf.Min(UpgradeStats.IndexLifeSteal + 1, maxUpgrade);
+                if (UpgradeStats.moneyAmount >= Upgrade.GetCost(upgradeType))
+                {
+                    UpgradeStats.moneyAmount = UpgradeStats.moneyAmount - Upgrade.GetCost(upgradeType);
+                    UpgradeStats.IndexLifeSteal = Mathf.Min(UpgradeStats.IndexLifeSteal + 1, maxUpgrade);
+                    UpdateMoneyText();
+                }
                 break;
             case Upgrade.UpgradeType.SpeedUpgraded:
-                UpgradeStats.IndexSpeed = Mathf.Min(UpgradeStats.IndexSpeed + 1, maxUpgrade);
+                if (UpgradeStats.moneyAmount >= Upgrade.GetCost(upgradeType))
+                {
+                    UpgradeStats.moneyAmount = UpgradeStats.moneyAmount - Upgrade.GetCost(upgradeType);
+                    UpgradeStats.IndexSpeed = Mathf.Min(UpgradeStats.IndexSpeed + 1, maxUpgrade);
+                    UpdateMoneyText();
+                }
                 break;
             case Upgrade.UpgradeType.ScaryUpgraded:
-                UpgradeStats.IndexScary = Mathf.Min(UpgradeStats.IndexScary + 1, maxUpgrade);
+                if (UpgradeStats.moneyAmount >= Upgrade.GetCost(upgradeType))
+                {
+                    UpgradeStats.moneyAmount = UpgradeStats.moneyAmount - Upgrade.GetCost(upgradeType);
+                    UpgradeStats.IndexScary = Mathf.Min(UpgradeStats.IndexScary + 1, maxUpgrade);
+                    UpdateMoneyText();
+                }
                 break;
             default:
                 Debug.LogError("ni puta idea de mejora: " + upgradeType);
                 break;
         }
+
+    }
+
+    private void UpdateMoneyText()
+    {
+        moneyText.SetText(UpgradeStats.moneyAmount.ToString());
     }
 }
