@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     private const string HORIZONTAL = "Horizontal";
     private const string VERTICAL = "Vertical";
 
-    [SerializeField] StatsSO _statsSO;
+    [SerializeField] CharacterStatsSO _statsSO;
     private Rigidbody _rb;
 
     private Vector2 _movXZ;

@@ -90,11 +90,11 @@ public class GameManager : MonoBehaviour
             Debug.Log(radius);
 
             float x = Mathf.Cos(angle) * radius;
-            float z = Mathf.Sin(angle) * radius;
+            float y = Mathf.Sin(angle) * radius;
 
             Vector3 spawnPos = new Vector3(_playerController.transform.position.x + x,
                 0f,
-                _playerController.transform.position.z + z);
+                _playerController.transform.position.z + y);
 
             GameObject enemyGO = Instantiate(_enemies[Random.Range(0, _enemies.Length)], spawnPos, Quaternion.identity);
             enemyGO.transform.LookAt(_playerController.transform);
