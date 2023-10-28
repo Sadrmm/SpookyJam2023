@@ -12,6 +12,8 @@ public class PlayerTrigger : MonoBehaviour
 
     public event Action OnPlayerPushed;
 
+    public ParticleSystem explosionPrefab;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -24,6 +26,11 @@ public class PlayerTrigger : MonoBehaviour
             Vector3 enemyPos = enemy.transform.position;
 
             Vector3 dir = (transform.position - enemyPos).normalized;
+
+            float distance = (transform.position - enemyPos).magnitude;
+
+            explosionPrefab.transform.position = transform.position + dir * distance;
+            explosionPrefab.Play();
 
             Debug.DrawLine(enemyPos, dir, Color.red, 5f);
 
