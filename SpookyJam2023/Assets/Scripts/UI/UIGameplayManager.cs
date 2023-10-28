@@ -8,6 +8,7 @@ public class UIGameplayManager : MonoBehaviour
 
     [Header("Panels")]
     [SerializeField] UIHealthBarPanel _uiHealthBarPanel;
+    [SerializeField] UIAttacksPanel _uiAttacksPanel;
 
     private void OnEnable()
     {
@@ -17,6 +18,11 @@ public class UIGameplayManager : MonoBehaviour
     private void OnDisable()
     {
         _playerController.OnHealthChanged -= UpdateHealth;
+    }
+
+    private void Start()
+    {
+        _uiAttacksPanel.SetAttacksUI();
     }
 
     private void UpdateHealth(int newHealth)
