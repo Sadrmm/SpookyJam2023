@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerController : MonoBehaviour, IDamageable
+public class PlayerController : MonoBehaviour, IDamageable, ICharacter
 {
     private const string HORIZONTAL = "Horizontal";
     private const string VERTICAL = "Vertical";
@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private Painter _painter;
 
     [SerializeField] CharacterStatsSO _statsSO;
+    public CharacterStatsSO StatsSO => _statsSO;
     private Rigidbody _rb;
 
     private Vector2 _dir;
