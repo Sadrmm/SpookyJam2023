@@ -14,9 +14,11 @@ public class Scare : MonoBehaviour
 
     public void Attack()
     {
-        if (_nextAttackTime < Time.time) {
+        if (_nextAttackTime > Time.time) {
             return;
         }
+
+        Debug.Log("ataca");
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, _statsSO.Range, _enemyLayerMask);
         foreach (Collider collider in hitColliders) {
@@ -34,7 +36,7 @@ public class Scare : MonoBehaviour
                 continue;
             }
 
-            scareable.GetScared();
+            scareable.BeScared();
         }
 
         _nextAttackTime = Time.time + _statsSO.Cooldown;

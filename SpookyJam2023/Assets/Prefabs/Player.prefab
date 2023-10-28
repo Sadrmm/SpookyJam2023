@@ -308,8 +308,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 542befce6bca42a47ab2d7acf03e831d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _statsSO: {fileID: 0}
+  _statsSO: {fileID: 11400000, guid: 122a5193ad2ea3840833bb9d452ef516, type: 2}
   _enemyLayerMask:
     serializedVersion: 2
-    m_Bits: 0
-  projectilePrefab: {fileID: 0}
+    m_Bits: 64
+  projectilePrefab: {fileID: 8424603019798911339, guid: 9731eb5fbd176e64bab58f3d4fc8f510,
+    type: 3}
