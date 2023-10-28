@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
             enemyGO.transform.position = spawnPos;
             enemyGO.transform.LookAt(_playerController.transform);
 
-            EnemyAI enemyAI = enemyGO.GetComponent<EnemyAI>();
+            BaseEnemyAI enemyAI = enemyGO.GetComponent<BaseEnemyAI>();
 
             if (enemyAI == null) {
                 Debug.LogError($"{enemyGO} does not have EnemyAI script");

@@ -2,11 +2,11 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class EnemyAI : MonoBehaviour
+public abstract class BaseEnemyAI : MonoBehaviour
 {
     private ICharacter _enemyCharacter;
-    private NavMeshAgent _agent;
-    private Transform _playerTransform;
+    protected NavMeshAgent _agent;
+    protected Transform _playerTransform;
 
     private void Awake()
     {
@@ -23,7 +23,6 @@ public class EnemyAI : MonoBehaviour
     public void Init(Transform playerTransform)
     {
         _playerTransform = playerTransform;
-        Debug.Log("inicializado");
     }
 
     private void Update()
@@ -32,6 +31,9 @@ public class EnemyAI : MonoBehaviour
             return;
         }
 
-        _agent.SetDestination(_playerTransform.position);
+        Pathfinding();
+        //_agent.SetDestination(_playerTransform.position);
     }
+
+    protected abstract void Pathfinding();
 }
