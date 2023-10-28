@@ -23,6 +23,7 @@ public class UI_Shop : MonoBehaviour
     {
         //container = transform.Find("container");
         //shopUpgradeTemplate = transform.Find("shopUpgradeTemplate");
+
         shopUpgradeTemplate.gameObject.SetActive(false);
     }
 
@@ -49,6 +50,7 @@ public class UI_Shop : MonoBehaviour
     private void CreateUpgradeButton(Upgrade.UpgradeType upgradeType, Sprite upgradeSprite, string upgradeName, string upgradeDescription, int upgradeCost, int positionIndex)
     {
         Transform shopUpgradeTransform = Instantiate(shopUpgradeTemplate, container);
+        shopUpgradeTransform.gameObject.SetActive(true);
         RectTransform shopUpgradeRectTransform = shopUpgradeTransform.GetComponent<RectTransform>();
 
         //float shopUpgradeWidth = 190f;
@@ -102,7 +104,6 @@ public class UI_Shop : MonoBehaviour
 
     private void TryBuyUpgrade(Upgrade.UpgradeType upgradeType)
     {
-        Debug.Log("You bought the: " + upgradeType + "!!!");
 
         switch (upgradeType)
         {
@@ -114,7 +115,7 @@ public class UI_Shop : MonoBehaviour
                     UpdateMoneyText();
 
                     Debug.Log("money avaliable: " + UpgradeStats.moneyAmount);
-                    Debug.Log("upgrade cost: " + Upgrade.GetCost(upgradeType));
+                    Debug.Log("upgrade cost: " + UpgradeStats.IndexDamage);
                 }
                 //Debug.Log(UpgradeStats.IndexDamage);
                 break;
@@ -159,6 +160,7 @@ public class UI_Shop : MonoBehaviour
 
     private void UpdateMoneyText()
     {
+        moneyText.SetText("");
         moneyText.SetText(UpgradeStats.moneyAmount.ToString());
     }
 }

@@ -56,7 +56,7 @@ public class PaintPercentageController : MonoBehaviour
         }
         _percentage = Mathf.InverseLerp(0, maskPixelNumber, targetColorPixels);
 
-        Debug.Log(_percentage);
+        //Debug.Log(_percentage);
 
         OnPercentageCalculated?.Invoke(_percentage);
     }
@@ -72,6 +72,7 @@ public class PaintPercentageController : MonoBehaviour
         temp.Apply();
         RenderTexture.active = oldRT;
         Color[] pixels = temp.GetPixels();
+        Destroy(temp);
         return pixels;
     }
 }

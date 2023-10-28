@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/VictorTest.unity
     guid: 978e55b1d08d0e945ad0c48d1e40044c
+  - enabled: 1
+    path: Assets/Scenes/Enviroment.unity
+    guid: 84f23da0cf6c06c42b47dcc98ab2887c
+  - enabled: 1
+    path: Assets/Scenes/MainMenuScene.unity
+    guid: 8ff0c0772238d5e43aadbb8cd37ef386
   m_configObjects: {}

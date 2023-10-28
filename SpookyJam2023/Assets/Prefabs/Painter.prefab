@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e501b90f21b2574c9d17835a193c4f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 0
+  isPlayer: 1
   _paintMask:
     serializedVersion: 2
     m_Bits: 256
-  _radius: 0.5
-  _strength: 1
-  _hardness: 1
+  _radius: 1
+  _strength: 0.1
+  _hardness: 0.1
