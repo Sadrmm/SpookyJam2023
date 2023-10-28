@@ -24,6 +24,7 @@ public class Proyectile : MonoBehaviour
         }
 
         enemy.Damage(_statsSO.Damage);
+        Forces.PushObject(collision.collider, _speed, transform.position, _statsSO.Range);
         Destroy(gameObject);
     }
 
