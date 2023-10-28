@@ -19,7 +19,9 @@ public class UIAttacksPanel : MonoBehaviour
                 return;
             }
 
-            attackItem.SetItem(hability.Sprite, hability.KeyCode);
+            attackItem.InitItem(hability.Sprite, hability.KeyCode, hability);
         }
+
+        _attackTemplate.SetActive(false);
     }
 }

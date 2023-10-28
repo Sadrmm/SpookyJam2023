@@ -1,10 +1,12 @@
 using UnityEngine;
 
-public class Proyectile : MonoBehaviour
+public class Proyectile : MonoBehaviour, IHability
 {
     [SerializeField] float _speed = 1.0f;
 
     private HabilityStatsSO _statsSO;
+    public HabilityStatsSO StatsSO => _statsSO;
+
     private Transform _target;
 
     private void Update()

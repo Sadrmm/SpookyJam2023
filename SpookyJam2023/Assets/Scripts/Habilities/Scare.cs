@@ -1,25 +1,14 @@
 using UnityEngine;
 
-public class Scare : MonoBehaviour
+public class Scare : MonoBehaviour, IHability
 {
     [SerializeField] HabilityStatsSO _statsSO;
     public HabilityStatsSO StatsSO => _statsSO;
     [SerializeField] LayerMask _enemyLayerMask;
     [SerializeField] float _explosionForce = 10.0f;
 
-    private float _nextAttackTime;
-
-    private void Start()
-    {
-        _nextAttackTime = Time.time + _statsSO.Cooldown;
-    }
-
     public void Attack()
     {
-        if (_nextAttackTime > Time.time) {
-            return;
-        }
-
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, _statsSO.Range, _enemyLayerMask);
         foreach (Collider collider in hitColliders) {
             IDamageable enemy = collider.GetComponent<IDamageable>();
@@ -40,7 +29,5 @@ public class Scare : MonoBehaviour
 
             scareable.BeScared();
         }
-
-        _nextAttackTime = Time.time + _statsSO.Cooldown;
     }
 }

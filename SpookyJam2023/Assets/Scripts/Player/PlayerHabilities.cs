@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerHabilities : MonoBehaviour
 {
+    public static UnityAction<float, HabilityStatsSO> OnTimerUpdated;
+
     [SerializeField] LayerMask _enemyLayerMask;
 
     [Header("Projectil AutoAttack")]
@@ -12,10 +15,13 @@ public class PlayerHabilities : MonoBehaviour
 
     [Header("Scare Attack")]
     [SerializeField] Scare _scare;
+    private float _lastScareAttack;
 
     private void Update()
     {
+        OnTimerUpdated?.Invoke(Time.time - _lastShotTime, _projectileStatsSO);
         HandleProjectilAutoAttack();
+        OnTimerUpdated?.Invoke(Time.time - _lastScareAttack, _scare.StatsSO);
         HandleScareAttack();
     }
 
@@ -54,8 +60,13 @@ public class PlayerHabilities : MonoBehaviour
 
     private void HandleScareAttack()
     {
+        if (Time.time - _lastScareAttack < _scare.StatsSO.Cooldown) {
+            return;
+        }
+
         if (Input.GetKeyDown(_scare.StatsSO.KeyCode)) {
             _scare.Attack();
+            _lastScareAttack = Time.time;
         }
     }
 }
