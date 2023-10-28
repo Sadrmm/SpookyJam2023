@@ -28,10 +28,10 @@ public class Painter : MonoBehaviour
                 Paintable p = hit.collider.GetComponent<Paintable>();
                 if (p != null)
                 {
-                    PaintManager.instance.paint(p, hit.point, _radius, _hardness, _strength, isPlayer ? Color.black : Color.green);
+                    PaintManager.instance.paint(p, hit.point, _radius, _hardness, _strength, isPlayer ? Color.black : Color.clear);
                 }
             }
         };
-        threadStart.Invoke();   
+        threadStart.Invoke();
     }
 }
