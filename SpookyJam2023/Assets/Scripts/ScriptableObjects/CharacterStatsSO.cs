@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu()]
-public class StatsSO : ScriptableObject
+public class CharacterStatsSO : ScriptableObject
 {
     [SerializeField] float _moveSpeed;
     [SerializeField] float _rotSpeed;

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -35,21 +36,29 @@ public class GameManager : MonoBehaviour
     private int _waveIndex;
     private GameState _currentGameState;
 
-    private void Start()
+    private List<IScareable> _scaredEnemies;
+
+    private void Awake()
     {
         _currentTimer = _maxTimer;
         _currentTimeBtwnWaves = _timeBtwnWaves;
         _currentGameState = GameState.Playing;
+
+        _scaredEnemies = new List<IScareable>();
     }
 
     private void OnEnable()
     {
         _playerController.OnDead += PlayerDead;
+        IScareable.OnScared += AddScared;
+        IScareable.OnUnscared += RemoveScared;
     }
 
     private void OnDisable()
     {
         _playerController.OnDead -= PlayerDead;
+        IScareable.OnScared -= AddScared;
+        IScareable.OnUnscared -= RemoveScared;
     }
 
     private void Update()
@@ -60,6 +69,22 @@ public class GameManager : MonoBehaviour
 
         HandleTimer();
         HandleWaves();
+    }
+
+    private void AddScared(IScareable enemyScared)
+    {
+        if (_scaredEnemies.Contains(enemyScared)) { 
+            return;
+        }
+        _scaredEnemies.Add(enemyScared);
+    }
+
+    private void RemoveScared(IScareable enemyNotScared)
+    {
+        if (!_scaredEnemies.Contains(enemyNotScared)) {
+            return;
+        }
+        _scaredEnemies.Remove(enemyNotScared);
     }
 
     private void HandleWaves()
@@ -90,11 +115,11 @@ public class GameManager : MonoBehaviour
             Debug.Log(radius);
 
             float x = Mathf.Cos(angle) * radius;
-            float z = Mathf.Sin(angle) * radius;
+            float y = Mathf.Sin(angle) * radius;
 
             Vector3 spawnPos = new Vector3(_playerController.transform.position.x + x,
                 0f,
-                _playerController.transform.position.z + z);
+                _playerController.transform.position.z + y);
 
             GameObject enemyGO = Instantiate(_enemies[Random.Range(0, _enemies.Length)], spawnPos, Quaternion.identity);
             enemyGO.transform.LookAt(_playerController.transform);
