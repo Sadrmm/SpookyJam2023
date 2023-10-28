@@ -4,6 +4,7 @@ public class Scare : MonoBehaviour
 {
     [SerializeField] HabilityStatsSO _statsSO;
     [SerializeField] LayerMask _enemyLayerMask;
+    [SerializeField] float _explosionForce = 10.0f;
 
     private float _nextAttackTime;
 
@@ -27,6 +28,7 @@ public class Scare : MonoBehaviour
             }
 
             enemy.Damage(_statsSO.Damage);
+            Push(collider);
 
             IScareable scareable = enemy as IScareable;
 
@@ -38,5 +40,16 @@ public class Scare : MonoBehaviour
         }
 
         _nextAttackTime = Time.time + _statsSO.Cooldown;
+    }
+
+    private void Push(Collider collider)
+    {
+        Rigidbody rb = collider.GetComponent<Rigidbody>();
+
+        if (rb == null) {
+            return;
+        }
+
+        rb.AddExplosionForce(_explosionForce, transform.position, _statsSO.Range);
     }
 }
