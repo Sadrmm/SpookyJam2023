@@ -187,7 +187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 126902802}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268346, y: 0.00000002248122, z: -0.000000009312027, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: -0.000000022481217, z: 0.000000009312026, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 10, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -224,7 +224,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f127bd4db186d644a94d48157c83e56a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemies:
+  - {fileID: 5713433687591705794, guid: e9435ad17e4a729498091394f8b98e8d, type: 3}
+  - {fileID: 3471375565374417904, guid: 827bbc54de3e00d44b047c4508ebeea8, type: 3}
   _maxTimer: 60
+  _enemySpawnAmountCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 28.66166
+      outSlope: 28.66166
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.058088094
+    - serializedVersion: 3
+      time: 10
+      value: 110
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.081900276
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _timeBtwnWaves: 5
+  _minRadiusSpawn: 5
+  _maxRadiusSpawn: 10
   _playerController: {fileID: 1676325972}
 --- !u!4 &362547125
 Transform:
@@ -328,7 +358,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 678803078}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268346, y: 0.00000002248122, z: -0.000000009312027, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: -0.000000022481217, z: 0.000000009312026, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 10, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

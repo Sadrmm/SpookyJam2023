@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -16,18 +15,30 @@ public class GameManager : MonoBehaviour
         TimeIsUP
     }
 
-    [Header("Level Values")]
+    [Header("Prefabs")]
+    [SerializeField] GameObject[] _enemies;
+
+    [Header("Timer")]
     [SerializeField] float _maxTimer = 60.0f;
+
+    [Header("Enemies Spawn")]
+    [SerializeField] AnimationCurve _enemySpawnAmountCurve;
+    [SerializeField] float _timeBtwnWaves = 15.0f;
+    [SerializeField] float _minRadiusSpawn = 5.0f;
+    [SerializeField] float _maxRadiusSpawn = 10.0f;
 
     [Header("In game Gameobjects")]
     [SerializeField] PlayerController _playerController;
 
     private float _currentTimer;
+    private float _currentTimeBtwnWaves;
+    private int _waveIndex;
     private GameState _currentGameState;
 
     private void Start()
     {
         _currentTimer = _maxTimer;
+        _currentTimeBtwnWaves = _timeBtwnWaves;
         _currentGameState = GameState.Playing;
     }
 
@@ -43,18 +54,60 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        HandleTimer();
-    }
-
-    private void HandleTimer()
-    {
         if (_currentGameState != GameState.Playing) {
             return;
         }
 
+        HandleTimer();
+        HandleWaves();
+    }
+
+    private void HandleWaves()
+    {
+        _currentTimeBtwnWaves -= Time.deltaTime;
+
+        if (_currentTimeBtwnWaves < 0.0f) {
+            _waveIndex++;
+            int spawnEnemyAmount = Mathf.RoundToInt(_enemySpawnAmountCurve.Evaluate(_waveIndex));
+
+            SpawnWave(spawnEnemyAmount);
+
+            _currentTimeBtwnWaves = _timeBtwnWaves;
+        }
+    }
+
+    private void SpawnWave(int spawnEnemyAmount)
+    {
+        float spaceBtwnAngles = 2 * Mathf.PI / spawnEnemyAmount;
+        float angle = Random.Range(0f, 360f);
+
+        if (_maxRadiusSpawn < _minRadiusSpawn) { 
+            _maxRadiusSpawn = _minRadiusSpawn;
+        }
+
+        for (int i = 0; i < spawnEnemyAmount; i++) {
+            float radius = Random.Range(_minRadiusSpawn, _maxRadiusSpawn);
+            Debug.Log(radius);
+
+            float x = Mathf.Cos(angle) * radius;
+            float z = Mathf.Sin(angle) * radius;
+
+            Vector3 spawnPos = new Vector3(_playerController.transform.position.x + x,
+                0f,
+                _playerController.transform.position.z + z);
+
+            GameObject enemyGO = Instantiate(_enemies[Random.Range(0, _enemies.Length)], spawnPos, Quaternion.identity);
+            enemyGO.transform.LookAt(_playerController.transform);
+
+            angle += spaceBtwnAngles;
+        }
+    }
+
+    private void HandleTimer()
+    {
         _currentTimer -= Time.deltaTime;
 
-        if (_currentTimer <= 0.0f) {
+        if (_currentTimer < 0.0f) {
             EndGame(EndGameConditions.TimeIsUP);
         }
     }
