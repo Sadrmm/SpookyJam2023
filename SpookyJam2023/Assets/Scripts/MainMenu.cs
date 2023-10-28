@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject mainMenu;
     public GameObject creditsMenu;
+    public GameObject shopMenu;
     void Start()
     {
         MainMenuButton();
@@ -13,18 +14,27 @@ public class MainMenu : MonoBehaviour
 
     public void PlayNowButton()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Scene1");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Enviroment");
+    }
+
+    public void ShopNowButton()
+    {
+        mainMenu.SetActive(false);
+        shopMenu.SetActive(true);
+        creditsMenu.SetActive(false);
     }
 
     public void CreditsButton()
     {
         mainMenu.SetActive(false);
+        shopMenu.SetActive(false);
         creditsMenu.SetActive(true);
     }
 
     public void MainMenuButton()
     {
         mainMenu.SetActive(true);
+        shopMenu.SetActive(false);
         creditsMenu.SetActive(false);
     }
 
