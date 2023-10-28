@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,6 +6,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 {
     private const string HORIZONTAL = "Horizontal";
     private const string VERTICAL = "Vertical";
+
+    [SerializeField] private Painter _painter;
 
     [SerializeField] CharacterStatsSO _statsSO;
     private Rigidbody _rb;
@@ -42,22 +45,32 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private Vector2 GetDirectionNormalized()
     {
-        Vector2 dir = Vector2.zero; // -> NEW INPUT SYSTEM
+        Vector2 dir = Vector2.zero;
+        bool keyPressed = false;
         if (Input.GetKey(KeyCode.W))
         {
             dir.y += 1;
+            keyPressed = true;
         }
         if (Input.GetKey(KeyCode.S))
         {
             dir.y -= 1;
+            keyPressed = true;
         }
         if (Input.GetKey(KeyCode.A))
         {
             dir.x -= 1;
+            keyPressed = true;
         }
         if (Input.GetKey(KeyCode.D))
         {
             dir.x += 1;
+            keyPressed = true;
+        }
+
+        if (keyPressed)
+        {
+            _painter.Paint();
         }
 
         return dir.normalized;

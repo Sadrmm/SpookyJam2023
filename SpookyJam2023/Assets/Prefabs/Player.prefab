@@ -347,6 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557f03c87cedf0d49b3424fdf0fad510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _painter: {fileID: 0}
   _statsSO: {fileID: 11400000, guid: 3604067b6dbe2b14c83f157dc037e766, type: 2}
 --- !u!114 &8910654428510861216
 MonoBehaviour:
@@ -408,6 +409,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 854531725444064059}
     m_Modifications:
+    - target: {fileID: 1046962870462750011, guid: 79b2636eb5cda444e8b40bc344c00a15,
+        type: 3}
+      propertyPath: _radius
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 1046962870462750011, guid: 79b2636eb5cda444e8b40bc344c00a15,
         type: 3}
       propertyPath: isPlayer

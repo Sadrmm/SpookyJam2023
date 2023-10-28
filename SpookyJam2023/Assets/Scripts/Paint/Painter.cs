@@ -15,16 +15,6 @@ public class Painter : MonoBehaviour
     [SerializeField] private float _strength = 1;
     [SerializeField] private float _hardness = 1;
 
-    public static Painter Instance;
-
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            Paint();
-        }
-    }
-
     public void Paint()
     {
         ThreadStart threadStart = delegate

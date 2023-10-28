@@ -135,6 +135,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557f03c87cedf0d49b3424fdf0fad510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &574678299 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4654337233793045842, guid: 5270aa01655ee2f4abc5cb8e8a17f77e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1349782051}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e501b90f21b2574c9d17835a193c4f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1349782051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -143,6 +155,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2715629844421609168, guid: 5270aa01655ee2f4abc5cb8e8a17f77e,
+        type: 3}
+      propertyPath: _painter
+      value: 
+      objectReference: {fileID: 574678299}
     - target: {fileID: 3719083438456264209, guid: 5270aa01655ee2f4abc5cb8e8a17f77e,
         type: 3}
       propertyPath: m_LocalPosition.x
