@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,11 +12,11 @@ public class PlayerController : MonoBehaviour, IDamageable, ICharacter
 
     [SerializeField] CharacterStatsSO _statsSO;
     public CharacterStatsSO StatsSO => _statsSO;
+
     private Rigidbody _rb;
-
     private Vector2 _dir;
-
     private int _currentHealth;
+    private bool _canMove = true;
 
     public UnityAction<int> OnHealthChanged { get; set; }
     public UnityAction OnDead { get; set; }
@@ -23,17 +24,22 @@ public class PlayerController : MonoBehaviour, IDamageable, ICharacter
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        GetComponent<PlayerTrigger>().OnPlayerPushed += PlayerTrigger_OnPlayerPushed;
     }
 
     private void Start()
     {
         _currentHealth = _statsSO.MaxHealth;
     }
+
     private void Update()
     {
         _dir = GetDirectionNormalized();
 
-        HandleRotation();
+        if (_canMove)
+        {
+            HandleRotation();
+        }
 
         if (Input.GetKeyDown(KeyCode.K))
             Damage(10);
@@ -41,7 +47,10 @@ public class PlayerController : MonoBehaviour, IDamageable, ICharacter
 
     private void FixedUpdate()
     {
-        HandleMovement();
+        if (_canMove)
+        {
+            HandleMovement();
+        }
     }
 
     private Vector2 GetDirectionNormalized()
@@ -109,4 +118,22 @@ public class PlayerController : MonoBehaviour, IDamageable, ICharacter
         OnDead?.Invoke();
     }
     #endregion
+
+
+    Coroutine coroutine;
+    private void PlayerTrigger_OnPlayerPushed()
+    {
+        _canMove = false;
+        if (coroutine != null) 
+        { 
+            StopCoroutine(coroutine);
+        }
+        coroutine = StartCoroutine(PushTimer(0.3f));
+    }
+
+    private IEnumerator PushTimer(float t)
+    {
+        yield return new WaitForSeconds(t);
+        _canMove = true;
+    }
 }

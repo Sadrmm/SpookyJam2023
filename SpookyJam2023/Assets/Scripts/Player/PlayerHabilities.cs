@@ -24,6 +24,7 @@ public class PlayerHabilities : MonoBehaviour
     {
         if (Time.time - _lastShotTime < _projectileStatsSO.Cooldown) {
             return;
+            Debug.Log(2);
         }
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, _projectileStatsSO.Range, _enemyLayerMask);
