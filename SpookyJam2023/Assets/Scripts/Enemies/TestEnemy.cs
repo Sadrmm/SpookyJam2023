@@ -2,10 +2,12 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TestEnemy : MonoBehaviour, IDamageable, IScareable
+public class TestEnemy : MonoBehaviour, ICharacter, IDamageable, IScareable
 {
 
     [SerializeField] CharacterStatsSO _statsSO;
+    public CharacterStatsSO StatsSO => _statsSO;
+
     private float _currentHealth;
 
     [SerializeField] float _maxTimeScared;
