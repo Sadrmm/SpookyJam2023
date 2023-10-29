@@ -130,7 +130,7 @@ MonoBehaviour:
   _scaredComp: {fileID: 2399100065098803779}
   _maxTimeScared: 5
   _statsSO: {fileID: 11400000, guid: 4629264fd2794d8459679b10855afa5b, type: 2}
-  _particlesPrefab: {fileID: 1000010675638318, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c,
+  _particlesPrefab: {fileID: 141433446842962269, guid: 9fe8f8b3288e45a44af36ff8aa04486e,
     type: 3}
   _animator: {fileID: 6201913372676476046}
   m_AudioAttackComponent: {fileID: 2019049077448177954}
@@ -477,6 +477,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b485d8b52d3cb7441b2dd6b3a413ed65, type: 2}
+    - target: {fileID: 8484360597081427743, guid: 7f53bca9a165bd14289d60c16271755f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8484360597081427743, guid: 7f53bca9a165bd14289d60c16271755f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
