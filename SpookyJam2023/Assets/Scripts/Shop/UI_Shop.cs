@@ -113,49 +113,49 @@ public class UI_Shop : MonoBehaviour
         switch (upgradeType)
         {
             case Upgrade.UpgradeType.DamageUpgraded:
-                if(UpgradeStats.moneyAmount >= Upgrade.GetCost(upgradeType))
+                if(UpgradeStats.MoneyAmount >= Upgrade.GetCost(upgradeType))
                 {
-                    UpgradeStats.moneyAmount = UpgradeStats.moneyAmount - Upgrade.GetCost(upgradeType);
+                    UpgradeStats.MoneyAmount = UpgradeStats.MoneyAmount - Upgrade.GetCost(upgradeType);
                     UpgradeStats.IndexDamage = Mathf.Min(UpgradeStats.IndexDamage + 1, maxUpgrade);
                     UpdateCost();
                     UpdateMoneyText();
 
-                    Debug.Log("money avaliable: " + UpgradeStats.moneyAmount);
+                    Debug.Log("money avaliable: " + UpgradeStats.MoneyAmount);
                     Debug.Log("upgrade cost: " + UpgradeStats.IndexDamage);
                 }
                 //Debug.Log(UpgradeStats.IndexDamage);
                 break;
             case Upgrade.UpgradeType.ProyectileRangeUpgraded:
-                if (UpgradeStats.moneyAmount >= Upgrade.GetCost(upgradeType))
+                if (UpgradeStats.MoneyAmount >= Upgrade.GetCost(upgradeType))
                 {
-                    UpgradeStats.moneyAmount = UpgradeStats.moneyAmount - Upgrade.GetCost(upgradeType);
+                    UpgradeStats.MoneyAmount = UpgradeStats.MoneyAmount - Upgrade.GetCost(upgradeType);
                     UpgradeStats.IndexRange = Mathf.Min(UpgradeStats.IndexRange + 1, maxUpgrade);
                     UpdateCost();
                     UpdateMoneyText();
                 }
                 break;
             case Upgrade.UpgradeType.LifeStealUpgraded:
-                if (UpgradeStats.moneyAmount >= Upgrade.GetCost(upgradeType))
+                if (UpgradeStats.MoneyAmount >= Upgrade.GetCost(upgradeType))
                 {
-                    UpgradeStats.moneyAmount = UpgradeStats.moneyAmount - Upgrade.GetCost(upgradeType);
+                    UpgradeStats.MoneyAmount = UpgradeStats.MoneyAmount - Upgrade.GetCost(upgradeType);
                     UpgradeStats.IndexLifeSteal = Mathf.Min(UpgradeStats.IndexLifeSteal + 1, maxUpgrade);
                     UpdateCost();
                     UpdateMoneyText();
                 }
                 break;
             case Upgrade.UpgradeType.SpeedUpgraded:
-                if (UpgradeStats.moneyAmount >= Upgrade.GetCost(upgradeType))
+                if (UpgradeStats.MoneyAmount >= Upgrade.GetCost(upgradeType))
                 {
-                    UpgradeStats.moneyAmount = UpgradeStats.moneyAmount - Upgrade.GetCost(upgradeType);
+                    UpgradeStats.MoneyAmount = UpgradeStats.MoneyAmount - Upgrade.GetCost(upgradeType);
                     UpgradeStats.IndexSpeed = Mathf.Min(UpgradeStats.IndexSpeed + 1, maxUpgrade);
                     UpdateCost();
                     UpdateMoneyText();
                 }
                 break;
             case Upgrade.UpgradeType.ScaryUpgraded:
-                if (UpgradeStats.moneyAmount >= Upgrade.GetCost(upgradeType))
+                if (UpgradeStats.MoneyAmount >= Upgrade.GetCost(upgradeType))
                 {
-                    UpgradeStats.moneyAmount = UpgradeStats.moneyAmount - Upgrade.GetCost(upgradeType);
+                    UpgradeStats.MoneyAmount = UpgradeStats.MoneyAmount - Upgrade.GetCost(upgradeType);
                     UpgradeStats.IndexCooldown = Mathf.Min(UpgradeStats.IndexCooldown + 1, maxUpgrade);
                     UpdateCost();
                     UpdateMoneyText();
@@ -170,7 +170,7 @@ public class UI_Shop : MonoBehaviour
     private void UpdateMoneyText()
     {
         moneyText.SetText("");
-        moneyText.SetText(UpgradeStats.moneyAmount.ToString());
+        moneyText.SetText(UpgradeStats.MoneyAmount.ToString());
     }
 
     private void UpdateCost()

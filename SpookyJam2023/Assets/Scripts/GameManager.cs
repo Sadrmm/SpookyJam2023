@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +21,11 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
+    // Events
+    public UnityAction<float> OnTimerUpdated;
+    public UnityAction OnGameEnded;
+
+    // Serialize Fields
     [SerializeField] AnimationCurve _upgradesCurve;
     public AnimationCurve UpgradesCurve => _upgradesCurve;
     [SerializeField] LayerMask _wallLayer;
@@ -49,9 +55,9 @@ public class GameManager : MonoBehaviour
     private int _waveIndex;
     private GameState _currentGameState;
 
-    private List<IScareable> _scaredEnemies;
+    private int _goldAchieved = 0;
 
-    public UnityAction<float> OnTimerUpdated;
+    private List<IScareable> _scaredEnemies;
 
     private void Awake()
     {
@@ -78,14 +84,16 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerController.OnDead += PlayerDead;
+        _playerController.OnPlayerDead += PlayerDead;
+        IDamageable.OnDead += EnemyDead;
         IScareable.OnScared += AddScared;
         IScareable.OnUnscared += RemoveScared;
     }
 
     private void OnDisable()
     {
-        _playerController.OnDead -= PlayerDead;
+        _playerController.OnPlayerDead -= PlayerDead;
+        IDamageable.OnDead -= EnemyDead;
         IScareable.OnScared -= AddScared;
         IScareable.OnUnscared -= RemoveScared;
     }
@@ -180,14 +188,26 @@ public class GameManager : MonoBehaviour
         OnTimerUpdated?.Invoke(_currentTimer);
 
         if (_currentTimer < 0.0f) {
-            EndGame(EndGameConditions.TimeIsUP);
+            TimeIsUp();
         }
+    }
+
+    private void EnemyDead(IDamageable enemyDead)
+    {
+        _goldAchieved++;
     }
 
     #region EndGame
     private void PlayerDead()
     {
+        _goldAchieved /= 2;
         EndGame(EndGameConditions.PlayerDead);
+    }
+
+    private void TimeIsUp()
+    {
+        _goldAchieved /= 2;
+        EndGame(EndGameConditions.TimeIsUP);
     }
 
     private void EndGame(EndGameConditions endCondition)
@@ -197,6 +217,9 @@ public class GameManager : MonoBehaviour
 
         DisablePlayer();
         DisableEnemies();
+
+        UpgradeStats.MoneyAmount += _goldAchieved;
+        OnGameEnded?.Invoke();
     }
 
     private void DisablePlayer()
@@ -225,5 +248,10 @@ public class GameManager : MonoBehaviour
             EndGame(EndGameConditions.ConqueredMap);
             PaintPercentageController.Instance.OnPercentageCalculated -= PaintPercentageController_OnPercentageCalculated;
         }
+    }
+
+    public void ToMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

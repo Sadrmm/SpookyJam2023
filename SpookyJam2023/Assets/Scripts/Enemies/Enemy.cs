@@ -24,7 +24,6 @@ public class Enemy : MonoBehaviour, ICharacter, IDamageable, IScareable
     private bool _isScared;
 
     public UnityAction<int> OnHealthChanged { get ; set; }
-    public UnityAction OnDead { get; set; }
 
     public bool IsScared => _isScared;
 
@@ -68,7 +67,7 @@ public class Enemy : MonoBehaviour, ICharacter, IDamageable, IScareable
 
     public void Dead()
     {
-        OnDead?.Invoke();
+        IDamageable.OnDead?.Invoke(this);
         GameObject temp = Instantiate(_particlesPrefab, transform.position, Quaternion.identity);
         Destroy(temp, 3);
         Destroy(gameObject);

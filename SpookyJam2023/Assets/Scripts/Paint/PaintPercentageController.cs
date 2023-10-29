@@ -1,13 +1,12 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PaintPercentageController : MonoBehaviour
 {
     private float _percentage;
+    public float Percentage => _percentage;
     private Paintable _paintable;
     [SerializeField] private float _timer = 2;
 
