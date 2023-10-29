@@ -58,12 +58,16 @@ public class Enemy : MonoBehaviour, ICharacter, IDamageable, IScareable
     {
         _currentHealth -= damage;
         OnHealthChanged?.Invoke(_currentHealth);
+
+        if (_currentHealth <= 0) {
+            Dead();
+        }
     }
 
     public void Dead()
     {
-        Debug.Log($"{gameObject} morido");
         OnDead?.Invoke();
+        Destroy(gameObject);
     }
     #endregion
 
