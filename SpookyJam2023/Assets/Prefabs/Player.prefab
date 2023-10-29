@@ -447,7 +447,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _painter: {fileID: 4654337233793045842}
   _playerHabilities: {fileID: 2813611032979283070}
+<<<<<<< Updated upstream
   _animator: {fileID: 9191084048480325258}
+=======
+<<<<<<< HEAD
+  _animator: {fileID: 0}
+=======
+  _animator: {fileID: 9191084048480325258}
+>>>>>>> a038e58c93d5d7f13c0b48c943c1e3639a2f2776
+>>>>>>> Stashed changes
   _statsSO: {fileID: 11400000, guid: 3604067b6dbe2b14c83f157dc037e766, type: 2}
 --- !u!114 &2813611032979283070
 MonoBehaviour:
