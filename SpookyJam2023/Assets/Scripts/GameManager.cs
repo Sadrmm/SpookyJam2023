@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -49,6 +50,8 @@ public class GameManager : MonoBehaviour
     private GameState _currentGameState;
 
     private List<IScareable> _scaredEnemies;
+
+    public UnityAction<float> OnTimerUpdated;
 
     private void Awake()
     {
@@ -174,6 +177,7 @@ public class GameManager : MonoBehaviour
     private void HandleTimer()
     {
         _currentTimer -= Time.deltaTime;
+        OnTimerUpdated?.Invoke(_currentTimer);
 
         if (_currentTimer < 0.0f) {
             EndGame(EndGameConditions.TimeIsUP);

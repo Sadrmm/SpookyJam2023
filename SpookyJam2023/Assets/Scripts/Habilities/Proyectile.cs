@@ -11,6 +11,9 @@ public class Proyectile : MonoBehaviour, IHability
 
     private void Update()
     {
+        if (_target == null) {
+            Destroy(gameObject);
+        }
         // Move our position a step closer to the target.
         var step = _speed * Time.deltaTime; // calculate distance to move
         transform.position = Vector3.MoveTowards(transform.position, _target.position, step);
