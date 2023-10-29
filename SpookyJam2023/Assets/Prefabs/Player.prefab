@@ -301,6 +301,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _explosionForce: 2000
+  m_AudioAttackComponent: {fileID: 1349618699882271299}
 --- !u!1 &4655910986413587275
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,11 +623,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundComponent
       objectReference: {fileID: 0}
+    - target: {fileID: 4084021568495197682, guid: 0f3092c7079d08241b40466d31b2ee2f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.475
+      objectReference: {fileID: 0}
+    - target: {fileID: 4084021568495197682, guid: 0f3092c7079d08241b40466d31b2ee2f,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9515232cc9450ae4996db3d3e27e858e, type: 3}
+    - target: {fileID: 4084021568495197682, guid: 0f3092c7079d08241b40466d31b2ee2f,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f3092c7079d08241b40466d31b2ee2f, type: 3}
+--- !u!114 &1349618699882271299 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2197551390538952286, guid: 0f3092c7079d08241b40466d31b2ee2f,
+    type: 3}
+  m_PrefabInstance: {fileID: 920293801577708573}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f13b965e994d845b53035026a5545d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4441741122728542856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3558325646594850453, guid: 0f3092c7079d08241b40466d31b2ee2f,
@@ -644,7 +672,7 @@ PrefabInstance:
     - target: {fileID: 1046962870462750011, guid: 79b2636eb5cda444e8b40bc344c00a15,
         type: 3}
       propertyPath: _radius
-      value: 0.75
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1046962870462750011, guid: 79b2636eb5cda444e8b40bc344c00a15,
         type: 3}
