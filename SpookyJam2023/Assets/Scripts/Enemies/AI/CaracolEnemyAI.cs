@@ -2,6 +2,7 @@ using System;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using DG.Tweening;
 
 public class CaracolEnemyAI : BaseEnemyAI
 {
@@ -18,6 +19,7 @@ public class CaracolEnemyAI : BaseEnemyAI
     {
         base.Start();
         Init(transform);
+        DOVirtual.DelayedCall(0.5f, () => _painter.Paint()).SetLoops(-1);
     }
 
     protected override void Pathfinding()
