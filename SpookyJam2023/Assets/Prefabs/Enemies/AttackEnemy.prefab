@@ -328,7 +328,7 @@ MonoBehaviour:
   _scaredComp: {fileID: 1287340232279450298}
   _maxTimeScared: 3
   _statsSO: {fileID: 11400000, guid: 38c0c17efbc1a0348ace8c24c6e8949c, type: 2}
-  _particlesPrefab: {fileID: 1000010675638318, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c,
+  _particlesPrefab: {fileID: 141433446842962269, guid: 9fe8f8b3288e45a44af36ff8aa04486e,
     type: 3}
   m_AudioAttackComponent: {fileID: 6104559567102664733}
 --- !u!114 &5997135916883165920
@@ -343,7 +343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9c85b5e1aead24384723b2b92b10d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnEffect: {fileID: 100000, guid: ada5d62ffe762ce4fbccc70dcdbc9022, type: 3}
 --- !u!114 &6267809041140695098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,7 +355,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb94509c150771949af2732785af87fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnEffect: {fileID: 0}
   _distanceToRun: 15
   _multiplierSpeed: 1.5
 --- !u!1001 &5388704071876120131

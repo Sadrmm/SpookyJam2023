@@ -72,8 +72,7 @@ public class Enemy : MonoBehaviour, ICharacter, IDamageable, IScareable
     {
         m_AudioAttackComponent.PlayAudio();
         IDamageable.OnDead?.Invoke(this);
-        GameObject temp = Instantiate(_particlesPrefab, transform.position, Quaternion.identity);
-        Destroy(temp, 3);
+        Instantiate(_particlesPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
     #endregion
