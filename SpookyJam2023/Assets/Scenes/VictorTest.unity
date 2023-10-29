@@ -533,6 +533,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f127bd4db186d644a94d48157c83e56a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _upgradesCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _enemies: []
   _maxTimer: 60
   _enemiesContainer: {fileID: 0}
@@ -860,6 +866,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CaracolEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857150422875566854, guid: 639ed9804ec1bb7459f4d1fe30d546e0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7473752589233282479, guid: 639ed9804ec1bb7459f4d1fe30d546e0,
         type: 3}

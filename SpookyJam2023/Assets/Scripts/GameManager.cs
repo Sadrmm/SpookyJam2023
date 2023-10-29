@@ -1,10 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private const float WIN_PERCENTAGE = 0.95f;
-
     private enum GameState
     {
         Playing,
@@ -30,6 +29,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] float _maxTimer = 60.0f;
 
     [Header("Enemies Spawn")]
+    [SerializeField] LayerMask _wallLayer;
     [SerializeField] Transform _enemiesContainer;
     [SerializeField] AnimationCurve _enemySpawnAmountCurve;
     [SerializeField] float _timeBtwnWaves = 15.0f;
@@ -38,6 +38,10 @@ public class GameManager : MonoBehaviour
 
     [Header("In game Gameobjects")]
     [SerializeField] PlayerController _playerController;
+
+    [Space]
+
+    public float percentageToWin = 0.8f;
 
     private float _currentTimer;
     private float _currentTimeBtwnWaves;
@@ -119,13 +123,13 @@ public class GameManager : MonoBehaviour
             _waveIndex++;
             int spawnEnemyAmount = Mathf.RoundToInt(_enemySpawnAmountCurve.Evaluate(_waveIndex));
 
-            SpawnWave(spawnEnemyAmount);
+            StartCoroutine(SpawnWave(spawnEnemyAmount));
 
             _currentTimeBtwnWaves = _timeBtwnWaves;
         }
     }
 
-    private void SpawnWave(int spawnEnemyAmount)
+    private IEnumerator SpawnWave(int spawnEnemyAmount)
     {
         float spaceBtwnAngles = 2 * Mathf.PI / spawnEnemyAmount;
         float angle = Random.Range(0f, 360f);
@@ -134,7 +138,8 @@ public class GameManager : MonoBehaviour
             _maxRadiusSpawn = _minRadiusSpawn;
         }
 
-        for (int i = 0; i < spawnEnemyAmount; i++) {
+        int i = 0;
+        while (i < spawnEnemyAmount) {
             float radius = Random.Range(_minRadiusSpawn, _maxRadiusSpawn);
 
             float x = Mathf.Cos(angle) * radius;
@@ -144,20 +149,25 @@ public class GameManager : MonoBehaviour
                 0f,
                 _playerController.transform.position.z + y);
 
-            GameObject enemyGO = Instantiate(_enemies[Random.Range(0, _enemies.Length)], _enemiesContainer);
-            enemyGO.transform.position = spawnPos;
-            enemyGO.transform.LookAt(_playerController.transform);
+            if (!Physics.CheckSphere(spawnPos, 1, _wallLayer))
+            {
+                GameObject enemyGO = Instantiate(_enemies[Random.Range(0, _enemies.Length)], _enemiesContainer);
+                enemyGO.transform.position = spawnPos;
+                enemyGO.transform.LookAt(_playerController.transform);
 
-            BaseEnemyAI enemyAI = enemyGO.GetComponent<BaseEnemyAI>();
+                BaseEnemyAI enemyAI = enemyGO.GetComponent<BaseEnemyAI>();
 
-            if (enemyAI == null) {
-                Debug.LogError($"{enemyGO} does not have EnemyAI script");
+                if (enemyAI == null) {
+                    Debug.LogError($"{enemyGO} does not have EnemyAI script");
+                }
+                else {
+                    enemyAI.Init(_playerController.transform);
+                }
+                angle += spaceBtwnAngles;
+                i++;
             }
-            else {
-                enemyAI.Init(_playerController.transform);
-            }
 
-            angle += spaceBtwnAngles;
+            yield return null;
         }
     }
 
@@ -185,7 +195,7 @@ public class GameManager : MonoBehaviour
 
     private void PaintPercentageController_OnPercentageCalculated(float percentage)
     {
-        if (percentage > WIN_PERCENTAGE)
+        if (percentage > percentageToWin)
         {
             EndGame(EndGameConditions.ConqueredMap);
             PaintPercentageController.Instance.OnPercentageCalculated -= PaintPercentageController_OnPercentageCalculated;

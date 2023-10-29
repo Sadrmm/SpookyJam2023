@@ -33,19 +33,19 @@ public class UI_Shop : MonoBehaviour
     {
         UpdateMoneyText();
         // putero violento
-        CreateUpgradeButton(Upgrade.UpgradeType.DamageUpgraded, Upgrade.GetSprite(Upgrade.UpgradeType.DamageUpgraded), "Damage Increase", "Increase your DAAMGE by an esplentastic 10%!",
+        CreateUpgradeButton(Upgrade.UpgradeType.DamageUpgraded, Upgrade.GetSprite(Upgrade.UpgradeType.DamageUpgraded), "Damage Increase", "Increase your DAMAGE by an esplentastic 10%!",
             Upgrade.GetCost(Upgrade.UpgradeType.DamageUpgraded), 0);
 
-        CreateUpgradeButton(Upgrade.UpgradeType.SpeedUpgraded, Upgrade.GetSprite(Upgrade.UpgradeType.SpeedUpgraded), "Speed Increase", "Increase your movement SPEED by an fantastic 10%!",
+        CreateUpgradeButton(Upgrade.UpgradeType.SpeedUpgraded, Upgrade.GetSprite(Upgrade.UpgradeType.SpeedUpgraded), "Speed Increase", "Increase your movement SPEED by a fantastic 10%!",
             Upgrade.GetCost(Upgrade.UpgradeType.SpeedUpgraded), 1);
 
         CreateUpgradeButton(Upgrade.UpgradeType.LifeStealUpgraded, Upgrade.GetSprite(Upgrade.UpgradeType.LifeStealUpgraded), "Life Steal", "Increase your LIFE STEAL by an incredible 10%!",
             Upgrade.GetCost(Upgrade.UpgradeType.LifeStealUpgraded), 2);
 
-        CreateUpgradeButton(Upgrade.UpgradeType.ScaryUpgraded, Upgrade.GetSprite(Upgrade.UpgradeType.ScaryUpgraded), "Spooky Increase", "Increase your SPOOKY by an awesome 10%!",
+        CreateUpgradeButton(Upgrade.UpgradeType.ScaryUpgraded, Upgrade.GetSprite(Upgrade.UpgradeType.ScaryUpgraded), "Spooky Increase", "Increase your SPOOKYNESS by an awesome 10%!",
             Upgrade.GetCost(Upgrade.UpgradeType.ScaryUpgraded), 3);
 
-        CreateUpgradeButton(Upgrade.UpgradeType.ProyectileRangeUpgraded, Upgrade.GetSprite(Upgrade.UpgradeType.ProyectileRangeUpgraded), "Proyectile Range Increase", "Increase your PROYECTILE RANGE by an wooping 10%!",
+        CreateUpgradeButton(Upgrade.UpgradeType.ProyectileRangeUpgraded, Upgrade.GetSprite(Upgrade.UpgradeType.ProyectileRangeUpgraded), "Range Increase", "Increase your RANGE by a wooping 10%!",
             Upgrade.GetCost(Upgrade.UpgradeType.ProyectileRangeUpgraded), 4);
     }
 

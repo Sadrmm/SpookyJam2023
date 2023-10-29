@@ -54,7 +54,7 @@ public class PaintPercentageController : MonoBehaviour
                 targetColorPixels++;
             }
         }
-        _percentage = Mathf.InverseLerp(0, maskPixelNumber, targetColorPixels);
+        _percentage = Mathf.InverseLerp(0, maskPixelNumber - maskPixelNumber * (1 - GameManager.Instance.percentageToWin), targetColorPixels);
 
        // Debug.Log("PERCENTAGE: " + _percentage);
 
