@@ -7,7 +7,15 @@ public class Proyectile : MonoBehaviour, IHability
     private HabilityStatsSO _statsSO;
     public HabilityStatsSO StatsSO => _statsSO;
 
+    [SerializeField]
+    private AudioComponent m_AudioAttackComponent;
+
     private Transform _target;
+
+    private void Start()
+    {
+        m_AudioAttackComponent.PlayAudio();
+    }
 
     private void Update()
     {
