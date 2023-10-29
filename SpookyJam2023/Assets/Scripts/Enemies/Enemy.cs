@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour, ICharacter, IDamageable, IScareable
 
     [Header("Character")]
     [SerializeField] CharacterStatsSO _statsSO;
+    [SerializeField] GameObject _particlesPrefab;
     public CharacterStatsSO StatsSO => _statsSO;
 
     private int _currentHealth;
@@ -68,6 +69,8 @@ public class Enemy : MonoBehaviour, ICharacter, IDamageable, IScareable
     public void Dead()
     {
         OnDead?.Invoke();
+        GameObject temp = Instantiate(_particlesPrefab, transform.position, Quaternion.identity);
+        Destroy(temp, 3);
         Destroy(gameObject);
     }
     #endregion

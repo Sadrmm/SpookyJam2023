@@ -129,6 +129,8 @@ MonoBehaviour:
   _scaredComp: {fileID: 2170281218382187097}
   _maxTimeScared: 5
   _statsSO: {fileID: 11400000, guid: 38c0c17efbc1a0348ace8c24c6e8949c, type: 2}
+  _particlesPrefab: {fileID: 1000010675638318, guid: a3768c8a9d1b90d4bb0eb0e4bdbe730c,
+    type: 3}
 --- !u!114 &1894023951807534626
 MonoBehaviour:
   m_ObjectHideFlags: 0
