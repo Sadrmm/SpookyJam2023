@@ -11,6 +11,7 @@ public class AudioComponent : MonoBehaviour
 
     public void PlayAudio()
     {
+        Debug.Log(m_AudioClip.clip);
         m_AudioClip.Play();
     }
 }
