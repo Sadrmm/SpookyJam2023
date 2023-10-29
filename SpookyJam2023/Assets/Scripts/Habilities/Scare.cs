@@ -7,6 +7,9 @@ public class Scare : MonoBehaviour, IHability
     [SerializeField] LayerMask _enemyLayerMask;
     [SerializeField] float _explosionForce = 10.0f;
 
+    [SerializeField]
+    private AudioComponent m_AudioAttackComponent;
+
     public void Attack()
     {
         float range = _statsSO.Range * GameManager.Instance.UpgradesCurve.Evaluate(UpgradeStats.IndexRange);
@@ -21,6 +24,7 @@ public class Scare : MonoBehaviour, IHability
 
             enemy.Damage(Mathf.RoundToInt(_statsSO.Damage * GameManager.Instance.UpgradesCurve.Evaluate(UpgradeStats.IndexDamage)));
             //Push(collider);
+            m_AudioAttackComponent.PlayAudio();
             Forces.PushObject(collider, _explosionForce, transform.position, range);
 
             IScareable scareable = enemy as IScareable;
