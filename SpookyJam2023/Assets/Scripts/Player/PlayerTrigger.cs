@@ -8,14 +8,19 @@ public class PlayerTrigger : MonoBehaviour
 
     [SerializeField] private float pushStrenght = 30f;
 
+    [SerializeField] private int _damage = 5;
+
     private Rigidbody _rigidbody;
 
     public event Action OnPlayerPushed;
 
-    //public ParticleSystem explosionPrefab;
+    public ParticleSystem explosionPrefab;
+
+    private PlayerController _playerController;
 
     private void Awake()
     {
+        _playerController = GetComponent<PlayerController>();
         _rigidbody = GetComponent<Rigidbody>();
     }
 
@@ -29,8 +34,10 @@ public class PlayerTrigger : MonoBehaviour
 
             float distance = (transform.position - enemyPos).magnitude;
 
-            //explosionPrefab.transform.position = transform.position + dir * distance;
-            //explosionPrefab.Play();
+            explosionPrefab.transform.position = transform.position + dir * distance;
+            explosionPrefab.Play();
+
+            _playerController.Damage(_damage);
 
             _rigidbody.velocity = Vector3.zero;
             _rigidbody.AddForce(dir * pushStrenght, ForceMode.Impulse);

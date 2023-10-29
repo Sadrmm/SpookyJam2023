@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class PlayerHabilities : MonoBehaviour
 {
     public static UnityAction<float, HabilityStatsSO> OnTimerUpdated;
+    public UnityAction OnAttack { get; set; }
 
     [SerializeField] LayerMask _enemyLayerMask;
 
@@ -70,6 +71,7 @@ public class PlayerHabilities : MonoBehaviour
         if (Input.GetKeyDown(_scare.StatsSO.KeyCode)) {
             _scare.Attack();
             _lastScareAttack = Time.time;
+            OnAttack?.Invoke();
         }
     }
 }
