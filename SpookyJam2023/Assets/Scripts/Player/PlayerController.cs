@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour, IDamageable, ICharacter
     private bool _canMove = true;
 
     public UnityAction<int> OnHealthChanged { get; set; }
-    public UnityAction OnDead { get; set; }
+    public UnityAction OnPlayerDead { get; set; }
 
     private void Awake()
     {
@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour, IDamageable, ICharacter
 
     public void Dead()
     {
-        OnDead?.Invoke();
+        OnPlayerDead?.Invoke();
     }
     #endregion
 

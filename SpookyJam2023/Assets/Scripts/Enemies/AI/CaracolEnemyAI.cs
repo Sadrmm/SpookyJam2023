@@ -14,8 +14,9 @@ public class CaracolEnemyAI : BaseEnemyAI
 
     private int _tries = 0;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         Init(transform);
     }
 
