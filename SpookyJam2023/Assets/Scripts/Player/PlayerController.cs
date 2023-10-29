@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -36,13 +35,15 @@ public class PlayerController : MonoBehaviour, IDamageable, ICharacter
     {
         _dir = GetDirectionNormalized();
 
-        if (_canMove)
-        {
-            HandleRotation();
-        }
-
         if (Input.GetKeyDown(KeyCode.K))
             Damage(10);
+
+        if (Input.GetKeyDown(KeyCode.P)) {
+            UpgradeStats.IndexSpeed = 5;
+            UpgradeStats.IndexDamage = 5;
+            UpgradeStats.IndexCooldown = 5;
+            UpgradeStats.IndexRange = 5;
+        }
     }
 
     private void FixedUpdate()
@@ -50,6 +51,11 @@ public class PlayerController : MonoBehaviour, IDamageable, ICharacter
         if (_canMove)
         {
             HandleMovement();
+        }
+
+        if (_canMove)
+        {
+            HandleRotation();
         }
     }
 
@@ -97,7 +103,7 @@ public class PlayerController : MonoBehaviour, IDamageable, ICharacter
     {
         Vector3 velocity = new Vector3(_dir.x, 0f, _dir.y);
         velocity.Normalize();
-        velocity *= _statsSO.MoveSpeed;
+        velocity *= _statsSO.MoveSpeed * GameManager.Instance.UpgradesCurve.Evaluate(UpgradeStats.IndexSpeed);
 
         _rb.velocity = velocity;
     }

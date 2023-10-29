@@ -65,17 +65,15 @@ public class CaracolEnemyAI : BaseEnemyAI
                 RenderTexture.active = oldRT;
                 Color pixelColor = temp.GetPixel((int) hit.textureCoord.x, (int) hit.textureCoord.y);
 
-                Debug.Log(pixelColor);
-
                 if (pixelColor.a > 0.35)
                 {
-                    Debug.Log("NORMAL");
+                    //Debug.Log("NORMAL");
                     _isWalkPointSet = true;
                     _destination = hit.point;
                 }
                 else if (_tries > 100)
                 {
-                    Debug.Log("TRY");
+                    //Debug.Log("TRY");
                     _isWalkPointSet = true;
                     _destination = hit.point;
                     _tries = 0;

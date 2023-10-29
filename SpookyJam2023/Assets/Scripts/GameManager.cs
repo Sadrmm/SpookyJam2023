@@ -18,6 +18,11 @@ public class GameManager : MonoBehaviour
         TimeIsUP
     }
 
+    public static GameManager Instance;
+
+    [SerializeField] AnimationCurve _upgradesCurve;
+    public AnimationCurve UpgradesCurve => _upgradesCurve;
+
     [Header("Prefabs")]
     [SerializeField] GameObject[] _enemies;
 
@@ -43,6 +48,15 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+
         _currentTimer = _maxTimer;
         _currentTimeBtwnWaves = _timeBtwnWaves;
         _currentGameState = GameState.Playing;
@@ -52,7 +66,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //PaintPercentageController.Instance.OnPercentageCalculated += PaintPercentageController_OnPercentageCalculated;
+        PaintPercentageController.Instance.OnPercentageCalculated += PaintPercentageController_OnPercentageCalculated;
     }
 
     private void OnEnable()
@@ -174,7 +188,7 @@ public class GameManager : MonoBehaviour
         if (percentage > WIN_PERCENTAGE)
         {
             EndGame(EndGameConditions.ConqueredMap);
-            //PaintPercentageController.Instance.OnPercentageCalculated -= PaintPercentageController_OnPercentageCalculated;
+            PaintPercentageController.Instance.OnPercentageCalculated -= PaintPercentageController_OnPercentageCalculated;
         }
     }
 }
