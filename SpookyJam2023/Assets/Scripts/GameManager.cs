@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] AnimationCurve _upgradesCurve;
     public AnimationCurve UpgradesCurve => _upgradesCurve;
+    [SerializeField] LayerMask _wallLayer;
 
     [Header("Prefabs")]
     [SerializeField] GameObject[] _enemies;
@@ -30,7 +31,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] float _maxTimer = 60.0f;
 
     [Header("Enemies Spawn")]
-    [SerializeField] LayerMask _wallLayer;
     [SerializeField] Transform _enemiesContainer;
     [SerializeField] AnimationCurve _enemySpawnAmountCurve;
     [SerializeField] float _timeBtwnWaves = 15.0f;
@@ -194,6 +194,27 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"Se acabó la partida por {endCondition}");
         _currentGameState = GameState.End;
+
+        DisablePlayer();
+        DisableEnemies();
+    }
+
+    private void DisablePlayer()
+    {
+        _playerController.DisablePlayer();
+    }
+    private void DisableEnemies()
+    {
+        foreach(Transform enemyTransform in _enemiesContainer) {
+            Enemy enemy = enemyTransform.GetComponent<Enemy>();
+
+            if (enemy == null) {
+                Debug.Log($"Algo que no es {nameof(Enemy)} se ha colado en {_enemiesContainer}");
+                continue;
+            }
+
+            enemy.DisableEnemy();
+        }
     }
     #endregion
 

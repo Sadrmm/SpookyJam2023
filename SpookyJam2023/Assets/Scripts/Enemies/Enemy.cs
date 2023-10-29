@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(ScaredEnemyAI))]
+[RequireComponent(typeof(Rigidbody))]
 public class Enemy : MonoBehaviour, ICharacter, IDamageable, IScareable
 {
     [Header("AI")]
@@ -86,6 +87,17 @@ public class Enemy : MonoBehaviour, ICharacter, IDamageable, IScareable
         IScareable.OnScared?.Invoke(this);
 
         StartCoroutine(StopBeingScared());
+    }
+
+    internal void DisableEnemy()
+    {
+        _defaulAI.enabled = false;
+        _scaredAI.enabled = false;
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        _defaulAI.Agent.enabled = false;
+        this.enabled = false;
     }
     #endregion
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,8 +8,8 @@ public class PlayerController : MonoBehaviour, IDamageable, ICharacter
     private const string HORIZONTAL = "Horizontal";
     private const string VERTICAL = "Vertical";
 
-    [SerializeField] private Painter _painter;
-
+    [SerializeField] Painter _painter;
+    [SerializeField] PlayerHabilities _playerHabilities;
     [SerializeField] CharacterStatsSO _statsSO;
     public CharacterStatsSO StatsSO => _statsSO;
 
@@ -141,5 +142,13 @@ public class PlayerController : MonoBehaviour, IDamageable, ICharacter
     {
         yield return new WaitForSeconds(t);
         _canMove = true;
+    }
+
+    internal void DisablePlayer()
+    {
+        _playerHabilities.enabled = false;
+        _rb.velocity = Vector3.zero;
+        _rb.angularVelocity = Vector3.zero;
+        this.enabled = false;
     }
 }

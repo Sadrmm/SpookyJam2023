@@ -6,6 +6,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
 {
     private ICharacter _enemyCharacter;
     protected NavMeshAgent _agent;
+    public NavMeshAgent Agent => _agent;
     protected Transform _playerTransform;
     public Transform PlayerTransform => _playerTransform;
 
