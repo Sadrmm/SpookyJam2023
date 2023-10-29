@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayNowButton()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Enviroment");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
     public void ShopNowButton()
