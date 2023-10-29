@@ -132,6 +132,7 @@ MonoBehaviour:
   _statsSO: {fileID: 11400000, guid: 38c0c17efbc1a0348ace8c24c6e8949c, type: 2}
   _particlesPrefab: {fileID: 141433446842962269, guid: 9fe8f8b3288e45a44af36ff8aa04486e,
     type: 3}
+  _animator: {fileID: 0}
   m_AudioAttackComponent: {fileID: 8729565709077108157}
 --- !u!114 &1894023951807534626
 MonoBehaviour:
@@ -562,7 +563,7 @@ PrefabInstance:
     - target: {fileID: 4084021568495197682, guid: 0f3092c7079d08241b40466d31b2ee2f,
         type: 3}
       propertyPath: m_Volume
-      value: 0.232
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4084021568495197682, guid: 0f3092c7079d08241b40466d31b2ee2f,
         type: 3}
