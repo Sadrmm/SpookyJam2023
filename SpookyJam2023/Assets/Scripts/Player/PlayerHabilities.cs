@@ -63,7 +63,7 @@ public class PlayerHabilities : MonoBehaviour
     private void HandleScareAttack()
     {
         if (Time.time - _lastScareAttack < (2 - GameManager.Instance.UpgradesCurve.Evaluate(
-                UpgradeStats.IndexCooldown)))  {
+                UpgradeStats.IndexCooldown)) * _scare.StatsSO.Cooldown)  {
             return;
         }
 
