@@ -41,8 +41,8 @@ public class Scare : MonoBehaviour, IHability
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        //Gizmos.DrawWireSphere(transform.position, _statsSO.Damage * GameManager.Instance.UpgradesCurve.Evaluate(UpgradeStats.IndexDamage));
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawWireSphere(transform.position, _statsSO.Damage * GameManager.Instance.UpgradesCurve.Evaluate(UpgradeStats.IndexDamage));
+    //}
 }

@@ -5,11 +5,13 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour, IDamageable, ICharacter
 {
-    private const string HORIZONTAL = "Horizontal";
-    private const string VERTICAL = "Vertical";
+    private const string MOVING = "Moving";
+    private const string DEAD = "Dead";
+    private const string ATTACKING = "Attacking";
 
     [SerializeField] Painter _painter;
     [SerializeField] PlayerHabilities _playerHabilities;
+    [SerializeField] Animator _animator;
     [SerializeField] CharacterStatsSO _statsSO;
     public CharacterStatsSO StatsSO => _statsSO;
 
@@ -30,6 +32,17 @@ public class PlayerController : MonoBehaviour, IDamageable, ICharacter
     private void Start()
     {
         _currentHealth = _statsSO.MaxHealth;
+        _playerHabilities.OnAttack += SetAttackAnimation;
+    }
+
+    private void OnDestroy()
+    {
+        _playerHabilities.OnAttack -= SetAttackAnimation;
+    }
+
+    private void SetAttackAnimation()
+    {
+        _animator.SetBool(ATTACKING, true);
     }
 
     private void Update()
@@ -106,6 +119,8 @@ public class PlayerController : MonoBehaviour, IDamageable, ICharacter
         velocity.Normalize();
         velocity *= _statsSO.MoveSpeed * GameManager.Instance.UpgradesCurve.Evaluate(UpgradeStats.IndexSpeed);
 
+        _animator.SetBool(MOVING, velocity != Vector3.zero);
+
         _rb.velocity = velocity;
     }
 
@@ -122,6 +137,7 @@ public class PlayerController : MonoBehaviour, IDamageable, ICharacter
 
     public void Dead()
     {
+        _animator.SetTrigger(DEAD);
         OnPlayerDead?.Invoke();
     }
     #endregion
