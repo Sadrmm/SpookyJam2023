@@ -6,6 +6,18 @@ public class ScaredEnemyAI : EnemyRunAwayAI
 
     private Vector3 _runAwayOrigin;
 
+    private bool _isScared;
+
+    private void OnEnable()
+    {
+        _isScared = true;
+    }
+
+    private void OnDisable()
+    {
+        _isScared = false;
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -33,6 +45,10 @@ public class ScaredEnemyAI : EnemyRunAwayAI
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (!_isScared) {
+            return;
+        }
+
         IScareable scareable = collision.gameObject.GetComponent<IScareable>();
 
         if (scareable == null) {
