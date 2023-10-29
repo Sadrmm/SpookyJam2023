@@ -17,6 +17,8 @@ public class UIMapFilledPanel : MonoBehaviour
 
     public void SetPercentageText(float percentage)
     {
-        _percentageText.text = $"{percentage}%";
+        percentage *= 100;
+        string percentageString = percentage.ToString("0.00");
+        _percentageText.text = $"{percentageString}%";
     }
 }

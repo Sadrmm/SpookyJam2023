@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //PaintPercentageController.Instance.OnPercentageCalculated += PaintPercentageController_OnPercentageCalculated;
+        PaintPercentageController.Instance.OnPercentageCalculated += PaintPercentageController_OnPercentageCalculated;
     }
 
     private void OnEnable()
@@ -188,7 +188,7 @@ public class GameManager : MonoBehaviour
         if (percentage > WIN_PERCENTAGE)
         {
             EndGame(EndGameConditions.ConqueredMap);
-            //PaintPercentageController.Instance.OnPercentageCalculated -= PaintPercentageController_OnPercentageCalculated;
+            PaintPercentageController.Instance.OnPercentageCalculated -= PaintPercentageController_OnPercentageCalculated;
         }
     }
 }
