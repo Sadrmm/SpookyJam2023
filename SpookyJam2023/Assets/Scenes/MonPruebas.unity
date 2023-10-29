@@ -465,7 +465,7 @@ MonoBehaviour:
   - {fileID: 5407997301011046096, guid: 7305c236ffa38fb468c172759e086a45, type: 3}
   - {fileID: 392330537735639794, guid: 57707b4622c1f984f8b55a8313ed8cad, type: 3}
   - {fileID: 3857150422875566854, guid: 639ed9804ec1bb7459f4d1fe30d546e0, type: 3}
-  _maxTimer: 10
+  _maxTimer: 30
   _enemiesContainer: {fileID: 1786763600}
   _enemySpawnAmountCurve:
     serializedVersion: 2
@@ -563,7 +563,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _timeBtwnWaves: 1.5
+  _timeBtwnWaves: 6
   _minRadiusSpawn: 5
   _maxRadiusSpawn: 10
   _playerController: {fileID: 1676325972}
