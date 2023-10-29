@@ -14,6 +14,6 @@ public class UIEndGamePanel : MonoBehaviour
     public void Show()
     {
         gameObject.SetActive(true);
-        SetTexts(PaintPercentageController.Instance.Percentage, UpgradeStats.MoneyAmount);
+        SetTexts(PaintPercentageController.Instance.Percentage * 100, UpgradeStats.MoneyAmount);
     }
 }
