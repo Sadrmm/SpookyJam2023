@@ -6,6 +6,7 @@ public class Scare : MonoBehaviour, IHability
     public HabilityStatsSO StatsSO => _statsSO;
     [SerializeField] LayerMask _enemyLayerMask;
     [SerializeField] float _explosionForce = 10.0f;
+    [SerializeField] ParticleSystem _particleSystem;
 
     [SerializeField]
     private AudioComponent m_AudioAttackComponent;
@@ -13,6 +14,8 @@ public class Scare : MonoBehaviour, IHability
     public void Attack()
     {
         float range = _statsSO.Range * GameManager.Instance.UpgradesCurve.Evaluate(UpgradeStats.IndexRange);
+
+        _particleSystem.Play();
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, range, _enemyLayerMask);
         foreach (Collider collider in hitColliders) {
@@ -35,5 +38,10 @@ public class Scare : MonoBehaviour, IHability
 
             scareable.BeScared();
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, _statsSO.Damage * GameManager.Instance.UpgradesCurve.Evaluate(UpgradeStats.IndexDamage));
     }
 }
