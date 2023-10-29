@@ -19,6 +19,9 @@ public class Enemy : MonoBehaviour, ICharacter, IDamageable, IScareable
     [SerializeField] GameObject _particlesPrefab;
     public CharacterStatsSO StatsSO => _statsSO;
 
+    [SerializeField]
+    private AudioComponent m_AudioAttackComponent;
+
     private int _currentHealth;
 
     private bool _isScared;
@@ -67,6 +70,7 @@ public class Enemy : MonoBehaviour, ICharacter, IDamageable, IScareable
 
     public void Dead()
     {
+        m_AudioAttackComponent.PlayAudio();
         IDamageable.OnDead?.Invoke(this);
         GameObject temp = Instantiate(_particlesPrefab, transform.position, Quaternion.identity);
         Destroy(temp, 3);
