@@ -53,6 +53,6 @@ Material:
     m_Floats:
     - _Radius: 1
     m_Colors:
-    - _Color: {r: 0.2901961, g: 0.019607844, b: 0.06666667, a: 1}
+    - _Color: {r: 0.29000098, g: 0.020396, b: 0.06839125, a: 1}
     - _MainColor: {r: 0.5, g: 0, b: 0.0234375, a: 1}
   m_BuildTextureStacks: []
