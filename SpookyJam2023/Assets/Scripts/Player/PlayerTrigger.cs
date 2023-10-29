@@ -32,8 +32,6 @@ public class PlayerTrigger : MonoBehaviour
             explosionPrefab.transform.position = transform.position + dir * distance;
             explosionPrefab.Play();
 
-            Debug.DrawLine(enemyPos, dir, Color.red, 5f);
-
             _rigidbody.velocity = Vector3.zero;
             _rigidbody.AddForce(dir * pushStrenght, ForceMode.Impulse);
 

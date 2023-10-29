@@ -36,10 +36,7 @@ public class PlayerController : MonoBehaviour, IDamageable, ICharacter
     {
         _dir = GetDirectionNormalized();
 
-        if (_canMove)
-        {
-            HandleRotation();
-        }
+        
 
         if (Input.GetKeyDown(KeyCode.K))
             Damage(10);
@@ -50,6 +47,11 @@ public class PlayerController : MonoBehaviour, IDamageable, ICharacter
         if (_canMove)
         {
             HandleMovement();
+        }
+
+        if (_canMove)
+        {
+            HandleRotation();
         }
     }
 

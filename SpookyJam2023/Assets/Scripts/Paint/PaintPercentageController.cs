@@ -49,14 +49,14 @@ public class PaintPercentageController : MonoBehaviour
         int targetColorPixels = 0;
         foreach (Color c in textureColors)
         {
-            if (c == Color.black)
+            if (c.a > 0.8)
             {
                 targetColorPixels++;
             }
         }
         _percentage = Mathf.InverseLerp(0, maskPixelNumber, targetColorPixels);
 
-        //Debug.Log(_percentage);
+        Debug.Log("PERCENTAGE: " + _percentage);
 
         OnPercentageCalculated?.Invoke(_percentage);
     }

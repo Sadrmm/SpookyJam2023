@@ -5,12 +5,12 @@ public class UIMapFilledPanel : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _percentageText;
 
-    private void OnEnable()
+    private void Start()
     {
         PaintPercentageController.Instance.OnPercentageCalculated += SetPercentageText;
     }
 
-    private void OnDisable()
+    private void Destroy()
     {
         PaintPercentageController.Instance.OnPercentageCalculated -= SetPercentageText;
     }
