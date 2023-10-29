@@ -18,7 +18,7 @@ public class Upgrade
         switch(upgradeType)
         {
             default:
-            case UpgradeType.ScaryUpgraded: return 20 * (UpgradeStats.IndexScary + 1);
+            case UpgradeType.ScaryUpgraded: return 20 * (UpgradeStats.IndexCooldown + 1);
             case UpgradeType.SpeedUpgraded: return 6 * (UpgradeStats.IndexSpeed + 1);
             case UpgradeType.DamageUpgraded: return 15 * (UpgradeStats.IndexDamage + 1);
             case UpgradeType.LifeStealUpgraded: return 1 * (UpgradeStats.IndexLifeSteal + 1);

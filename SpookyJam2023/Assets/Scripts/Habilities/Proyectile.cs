@@ -25,7 +25,7 @@ public class Proyectile : MonoBehaviour, IHability
             return;
         }
 
-        enemy.Damage(_statsSO.Damage);
+        enemy.Damage(Mathf.RoundToInt(_statsSO.Damage * GameManager.Instance.UpgradesCurve.Evaluate(UpgradeStats.IndexDamage)));
         Forces.PushObject(collision.collider, _speed, transform.position, _statsSO.Range);
         Destroy(gameObject);
     }

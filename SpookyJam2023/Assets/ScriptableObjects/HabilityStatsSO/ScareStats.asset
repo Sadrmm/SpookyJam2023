@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 779401ce6e057a943a0dbdfea740dddc, type: 3}
   m_Name: ScareStats
   m_EditorClassIdentifier: 
-  _damage: 10
-  _cooldown: 10
+  _damage: 20
+  _cooldown: 8
   _range: 5
   _sprite: {fileID: -11648093, guid: 0aab20acea2389b44b6e0f3b0760c792, type: 3}
   _keyCode: 118
