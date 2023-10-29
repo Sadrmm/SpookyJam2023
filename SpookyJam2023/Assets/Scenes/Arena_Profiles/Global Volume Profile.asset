@@ -39,7 +39,7 @@ MonoBehaviour:
     value: 1
   softKnee:
     overrideState: 1
-    value: 0.5
+    value: 0.822
   clamp:
     overrideState: 1
     value: 65472
@@ -53,14 +53,14 @@ MonoBehaviour:
     overrideState: 1
     value: {r: 0.48592806, g: 1, b: 0, a: 1}
   fastMode:
-    overrideState: 0
+    overrideState: 1
     value: 0
   dirtTexture:
-    overrideState: 0
+    overrideState: 1
     value: {fileID: 0}
     defaultState: 1
   dirtIntensity:
-    overrideState: 0
+    overrideState: 1
     value: 0
 --- !u!114 &8801723948437929194
 MonoBehaviour:
@@ -79,30 +79,30 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   mode:
-    overrideState: 0
+    overrideState: 1
     value: 0
   color:
-    overrideState: 0
+    overrideState: 1
     value: {r: 0, g: 0, b: 0, a: 1}
   center:
-    overrideState: 0
+    overrideState: 1
     value: {x: 0.5, y: 0.5}
   intensity:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 0.729
   smoothness:
-    overrideState: 0
+    overrideState: 1
     value: 0.2
   roundness:
-    overrideState: 0
+    overrideState: 1
     value: 1
   rounded:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 1
   mask:
-    overrideState: 0
+    overrideState: 1
     value: {fileID: 0}
     defaultState: 1
   opacity:
-    overrideState: 0
+    overrideState: 1
     value: 1
