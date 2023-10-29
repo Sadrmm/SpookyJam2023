@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 779401ce6e057a943a0dbdfea740dddc, type: 3}
   m_Name: BaseProjectileStats
   m_EditorClassIdentifier: 
-  _damage: 5
-  _cooldown: 1
+  _damage: 10
+  _cooldown: 0.6
   _range: 10
   _sprite: {fileID: -1444256644, guid: 0aab20acea2389b44b6e0f3b0760c792, type: 3}
   _keyCode: 0

@@ -27,12 +27,14 @@ public class PlayerHabilities : MonoBehaviour
 
     private void HandleProjectilAutoAttack()
     {
-        if (Time.time - _lastShotTime < _projectileStatsSO.Cooldown) {
+        if (Time.time - _lastShotTime < _projectileStatsSO.Cooldown * (2 - GameManager.Instance.UpgradesCurve.Evaluate(
+                UpgradeStats.IndexCooldown))) {
             return;
-            Debug.Log(2);
         }
 
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, _projectileStatsSO.Range, _enemyLayerMask);
+        float range = _projectileStatsSO.Range * GameManager.Instance.UpgradesCurve.Evaluate(UpgradeStats.IndexRange);
+
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, range, _enemyLayerMask);
 
         if (hitColliders.Length > 0) {
             foreach (Collider collider in hitColliders) {
@@ -60,7 +62,8 @@ public class PlayerHabilities : MonoBehaviour
 
     private void HandleScareAttack()
     {
-        if (Time.time - _lastScareAttack < _scare.StatsSO.Cooldown) {
+        if (Time.time - _lastScareAttack < (2 - GameManager.Instance.UpgradesCurve.Evaluate(
+                UpgradeStats.IndexCooldown)))  {
             return;
         }
 

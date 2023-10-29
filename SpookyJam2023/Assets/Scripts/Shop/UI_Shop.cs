@@ -156,7 +156,7 @@ public class UI_Shop : MonoBehaviour
                 if (UpgradeStats.moneyAmount >= Upgrade.GetCost(upgradeType))
                 {
                     UpgradeStats.moneyAmount = UpgradeStats.moneyAmount - Upgrade.GetCost(upgradeType);
-                    UpgradeStats.IndexScary = Mathf.Min(UpgradeStats.IndexScary + 1, maxUpgrade);
+                    UpgradeStats.IndexCooldown = Mathf.Min(UpgradeStats.IndexCooldown + 1, maxUpgrade);
                     UpdateCost();
                     UpdateMoneyText();
                 }

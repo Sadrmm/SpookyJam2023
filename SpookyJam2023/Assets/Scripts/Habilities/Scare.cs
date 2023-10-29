@@ -9,7 +9,9 @@ public class Scare : MonoBehaviour, IHability
 
     public void Attack()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, _statsSO.Range, _enemyLayerMask);
+        float range = _statsSO.Range * GameManager.Instance.UpgradesCurve.Evaluate(UpgradeStats.IndexRange);
+
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, range, _enemyLayerMask);
         foreach (Collider collider in hitColliders) {
             IDamageable enemy = collider.GetComponent<IDamageable>();
 
@@ -17,9 +19,9 @@ public class Scare : MonoBehaviour, IHability
                 continue;
             }
 
-            enemy.Damage(_statsSO.Damage);
+            enemy.Damage(Mathf.RoundToInt(_statsSO.Damage * GameManager.Instance.UpgradesCurve.Evaluate(UpgradeStats.IndexDamage)));
             //Push(collider);
-            Forces.PushObject(collider, _explosionForce, transform.position, _statsSO.Range);
+            Forces.PushObject(collider, _explosionForce, transform.position, range);
 
             IScareable scareable = enemy as IScareable;
 

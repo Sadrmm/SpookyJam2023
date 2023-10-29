@@ -18,6 +18,11 @@ public class GameManager : MonoBehaviour
         TimeIsUP
     }
 
+    public static GameManager Instance;
+
+    [SerializeField] AnimationCurve _upgradesCurve;
+    public AnimationCurve UpgradesCurve => _upgradesCurve;
+
     [Header("Prefabs")]
     [SerializeField] GameObject[] _enemies;
 
@@ -43,6 +48,15 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+
         _currentTimer = _maxTimer;
         _currentTimeBtwnWaves = _timeBtwnWaves;
         _currentGameState = GameState.Playing;

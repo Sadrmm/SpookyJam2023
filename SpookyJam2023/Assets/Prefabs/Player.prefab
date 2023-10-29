@@ -300,7 +300,7 @@ MonoBehaviour:
   _enemyLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  _explosionForce: 10
+  _explosionForce: 2000
 --- !u!1 &5258648571221680537
 GameObject:
   m_ObjectHideFlags: 0
