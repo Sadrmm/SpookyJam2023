@@ -447,6 +447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _painter: {fileID: 4654337233793045842}
   _playerHabilities: {fileID: 2813611032979283070}
+  _animator: {fileID: 9191084048480325258}
   _statsSO: {fileID: 11400000, guid: 3604067b6dbe2b14c83f157dc037e766, type: 2}
 --- !u!114 &2813611032979283070
 MonoBehaviour:
@@ -481,6 +482,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pushStrenght: 30
+  _damage: 5
+  explosionPrefab: {fileID: 0}
 --- !u!1 &7292245849778972400
 GameObject:
   m_ObjectHideFlags: 0

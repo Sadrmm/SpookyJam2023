@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour, ICharacter, IDamageable, IScareable
     public UnityAction<int> OnHealthChanged { get ; set; }
 
     public bool IsScared => _isScared;
+    public bool IsDead => _currentHealth <= 0;
 
     private void Start()
     {

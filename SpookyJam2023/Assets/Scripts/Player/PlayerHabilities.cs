@@ -45,6 +45,10 @@ public class PlayerHabilities : MonoBehaviour
                     continue;
                 }
 
+                if (enemy.IsDead) {
+                    continue;
+                }
+
                 GameObject proyectileGO = Instantiate(_projectilePrefab, _projectileSpawn.position, _projectileSpawn.rotation);
                 Proyectile proyectile = proyectileGO.GetComponent<Proyectile>();
 

@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour, IDamageable, ICharacter
     private int _currentHealth;
     private bool _canMove = true;
 
+    public bool IsDead => _currentHealth <= 0;
+
     public UnityAction<int> OnHealthChanged { get; set; }
     public UnityAction OnPlayerDead { get; set; }
 
