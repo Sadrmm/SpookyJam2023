@@ -7,6 +7,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
     private ICharacter _enemyCharacter;
     protected NavMeshAgent _agent;
     protected Transform _playerTransform;
+    public Transform PlayerTransform => _playerTransform;
 
     private void Awake()
     {
@@ -14,7 +15,7 @@ public abstract class BaseEnemyAI : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         _agent.speed = _enemyCharacter.StatsSO.MoveSpeed;
         _agent.angularSpeed = _enemyCharacter.StatsSO.RotSpeed;
@@ -32,7 +33,6 @@ public abstract class BaseEnemyAI : MonoBehaviour
         }
 
         Pathfinding();
-        //_agent.SetDestination(_playerTransform.position);
     }
 
     protected abstract void Pathfinding();

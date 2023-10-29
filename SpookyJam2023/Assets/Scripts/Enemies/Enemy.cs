@@ -2,15 +2,23 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(ScaredEnemyAI))]
 public class Enemy : MonoBehaviour, ICharacter, IDamageable, IScareable
 {
+    [Header("AI")]
+    [SerializeField] BaseEnemyAI _defaulAI;
+    [SerializeField] ScaredEnemyAI _scaredAI;
 
+    [Header("Scared")]
+    [SerializeField] ScaredUIComponent _scaredComp;
+    [SerializeField] float _maxTimeScared;
+
+    [Header("Character")]
     [SerializeField] CharacterStatsSO _statsSO;
     public CharacterStatsSO StatsSO => _statsSO;
 
     private int _currentHealth;
 
-    [SerializeField] float _maxTimeScared;
     private bool _isScared;
 
     public UnityAction<int> OnHealthChanged { get ; set; }
@@ -22,6 +30,7 @@ public class Enemy : MonoBehaviour, ICharacter, IDamageable, IScareable
     {
         _isScared = false;
         _currentHealth = _statsSO.MaxHealth;
+        _scaredAI.enabled = false;
     }
 
     IEnumerator StopBeingScared()
@@ -36,6 +45,11 @@ public class Enemy : MonoBehaviour, ICharacter, IDamageable, IScareable
         }
 
         _isScared = false;
+        _scaredComp.Hide();
+
+        _defaulAI.enabled = true;
+        _scaredAI.enabled = false;
+
         IScareable.OnUnscared?.Invoke(this);
     }
 
@@ -59,6 +73,12 @@ public class Enemy : MonoBehaviour, ICharacter, IDamageable, IScareable
         StopAllCoroutines();
         
         _isScared = true;
+        _scaredComp.Show(_maxTimeScared);
+
+        _defaulAI.enabled = false;
+        _scaredAI.enabled = true;
+        _scaredAI.Init(_defaulAI.PlayerTransform);
+
         IScareable.OnScared?.Invoke(this);
 
         StartCoroutine(StopBeingScared());
