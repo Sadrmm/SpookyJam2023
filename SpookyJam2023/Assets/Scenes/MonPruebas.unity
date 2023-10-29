@@ -220,7 +220,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 126902802}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268343, y: -0.000000022481213, z: 0.000000009312022, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268343, y: 0.000000022481224, z: -0.000000009312028, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 10, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -462,6 +462,9 @@ MonoBehaviour:
   - {fileID: 5407997301011046096, guid: 7305c236ffa38fb468c172759e086a45, type: 3}
   - {fileID: 392330537735639794, guid: 57707b4622c1f984f8b55a8313ed8cad, type: 3}
   _maxTimer: 60
+  _wallLayer:
+    serializedVersion: 2
+    m_Bits: 1073741824
   _enemiesContainer: {fileID: 1786763600}
   _enemySpawnAmountCurve:
     serializedVersion: 2
@@ -1890,12 +1893,12 @@ PrefabInstance:
     - target: {fileID: 3090230862394581445, guid: a96e81c018efd684e847f208fc3bc56f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000022481213
+      value: 0.000000022481224
       objectReference: {fileID: 0}
     - target: {fileID: 3090230862394581445, guid: a96e81c018efd684e847f208fc3bc56f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000009312022
+      value: -0.000000009312028
       objectReference: {fileID: 0}
     - target: {fileID: 3090230862394581445, guid: a96e81c018efd684e847f208fc3bc56f,
         type: 3}
