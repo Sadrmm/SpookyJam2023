@@ -3,7 +3,7 @@ using UnityEngine;
 public class Proyectile : MonoBehaviour, IHability
 {
     [SerializeField] float _speed = 1.0f;
-
+    [SerializeField] GameObject _particlePrefab;
     private HabilityStatsSO _statsSO;
     public HabilityStatsSO StatsSO => _statsSO;
 
@@ -31,6 +31,8 @@ public class Proyectile : MonoBehaviour, IHability
         }
 
         enemy.Damage(Mathf.RoundToInt(_statsSO.Damage * GameManager.Instance.UpgradesCurve.Evaluate(UpgradeStats.IndexDamage)));
+        GameObject temp = Instantiate(_particlePrefab, transform.position, Quaternion.identity);
+        Destroy(temp, 3);
         Forces.PushObject(collision.collider, _speed, transform.position, _statsSO.Range);
         Destroy(gameObject);
     }
