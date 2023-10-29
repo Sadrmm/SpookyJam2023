@@ -6,6 +6,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody))]
 public class Enemy : MonoBehaviour, ICharacter, IDamageable, IScareable
 {
+    private const string DEATH = "Death";
+
     [Header("AI")]
     [SerializeField] BaseEnemyAI _defaulAI;
     [SerializeField] ScaredEnemyAI _scaredAI;
@@ -16,8 +18,9 @@ public class Enemy : MonoBehaviour, ICharacter, IDamageable, IScareable
 
     [Header("Character")]
     [SerializeField] CharacterStatsSO _statsSO;
-    [SerializeField] GameObject _particlesPrefab;
     public CharacterStatsSO StatsSO => _statsSO;
+    [SerializeField] GameObject _particlesPrefab;
+    [SerializeField] Animator _animator;
 
     [SerializeField]
     private AudioComponent m_AudioAttackComponent;
@@ -72,8 +75,11 @@ public class Enemy : MonoBehaviour, ICharacter, IDamageable, IScareable
     {
         m_AudioAttackComponent.PlayAudio();
         IDamageable.OnDead?.Invoke(this);
-        Instantiate(_particlesPrefab, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        GameObject temp = Instantiate(_particlesPrefab, transform.position, Quaternion.identity);
+        Destroy(temp, 3);
+        //Destroy(gameObject);
+        _animator.SetTrigger(DEATH);
+        DisableEnemy();
     }
     #endregion
 

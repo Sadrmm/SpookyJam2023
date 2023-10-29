@@ -1,9 +1,9 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class AnimatorManager : MonoBehaviour
+public class EnemyAnimatorManager : MonoBehaviour
 {
-    private const string ATTACKING = "Attacking";
+    [SerializeField] GameObject _enemyGO;
 
     private Animator _animator;
 
@@ -12,8 +12,8 @@ public class AnimatorManager : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    public void AttackAnimationEnded()
+    public void PostDeathAnimation()
     {
-        _animator.SetBool(ATTACKING, false);
+        Destroy(_enemyGO);
     }
 }
