@@ -8,7 +8,7 @@ public class UIEndGamePanel : MonoBehaviour
 
     private void SetTexts(float finalPercentaje, int finalGold)
     {
-        _finalPercentajeText.text = $"Your Percentaje is:\n{finalPercentaje.ToString("F0")}";
+        _finalPercentajeText.text = $"Your Percentaje is:\n{finalPercentaje.ToString("0.00")}";
         _finalGoldText.text = $"Your GOLD:\n{finalGold}";
     }
     public void Show()

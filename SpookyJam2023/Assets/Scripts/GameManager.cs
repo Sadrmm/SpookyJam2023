@@ -188,7 +188,7 @@ public class GameManager : MonoBehaviour
         OnTimerUpdated?.Invoke(_currentTimer);
 
         if (_currentTimer < 0.0f) {
-            EndGame(EndGameConditions.TimeIsUP);
+            TimeIsUp();
         }
     }
 
@@ -202,6 +202,12 @@ public class GameManager : MonoBehaviour
     {
         _goldAchieved /= 2;
         EndGame(EndGameConditions.PlayerDead);
+    }
+
+    private void TimeIsUp()
+    {
+        _goldAchieved /= 2;
+        EndGame(EndGameConditions.TimeIsUP);
     }
 
     private void EndGame(EndGameConditions endCondition)
