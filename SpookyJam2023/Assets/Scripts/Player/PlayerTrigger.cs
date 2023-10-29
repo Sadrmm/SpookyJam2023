@@ -12,7 +12,7 @@ public class PlayerTrigger : MonoBehaviour
 
     public event Action OnPlayerPushed;
 
-    //public ParticleSystem explosionPrefab;
+    public ParticleSystem explosionPrefab;
 
     private void Awake()
     {
@@ -29,8 +29,8 @@ public class PlayerTrigger : MonoBehaviour
 
             float distance = (transform.position - enemyPos).magnitude;
 
-            //explosionPrefab.transform.position = transform.position + dir * distance;
-            //explosionPrefab.Play();
+            explosionPrefab.transform.position = transform.position + dir * distance;
+            explosionPrefab.Play();
 
             _rigidbody.velocity = Vector3.zero;
             _rigidbody.AddForce(dir * pushStrenght, ForceMode.Impulse);

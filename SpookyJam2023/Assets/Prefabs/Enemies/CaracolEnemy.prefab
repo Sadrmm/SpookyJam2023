@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138fc1ad57f49c040970f84a0a491942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnEffect: {fileID: 100000, guid: ada5d62ffe762ce4fbccc70dcdbc9022, type: 3}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -162,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb94509c150771949af2732785af87fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnEffect: {fileID: 0}
   _distanceToRun: 15
   _multiplierSpeed: 1.5
 --- !u!1 &5046265371243057767

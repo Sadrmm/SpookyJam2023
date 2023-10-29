@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5064bdb47e72a2c4bb4bdef880fc8912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnEffect: {fileID: 100000, guid: ada5d62ffe762ce4fbccc70dcdbc9022, type: 3}
   _distanceToRun: 15
 --- !u!114 &825501408342107242
 MonoBehaviour:
@@ -158,6 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb94509c150771949af2732785af87fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnEffect: {fileID: 100000, guid: ada5d62ffe762ce4fbccc70dcdbc9022, type: 3}
   _distanceToRun: 15
   _multiplierSpeed: 1.5
 --- !u!1 &3677845052235524964

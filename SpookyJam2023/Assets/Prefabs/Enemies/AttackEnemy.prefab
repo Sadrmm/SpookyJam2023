@@ -343,6 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9c85b5e1aead24384723b2b92b10d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnEffect: {fileID: 100000, guid: ada5d62ffe762ce4fbccc70dcdbc9022, type: 3}
 --- !u!114 &6267809041140695098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,6 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb94509c150771949af2732785af87fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnEffect: {fileID: 0}
   _distanceToRun: 15
   _multiplierSpeed: 1.5
 --- !u!1001 &5388704071876120131
