@@ -819,6 +819,12 @@ Transform:
   - {fileID: 472952268}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1017650754 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9191084048480325258, guid: 5270aa01655ee2f4abc5cb8e8a17f77e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8576450014365949835}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1101476107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2302,6 +2308,11 @@ PrefabInstance:
       propertyPath: _particleSystem
       value: 
       objectReference: {fileID: 97714690}
+    - target: {fileID: 2715629844421609168, guid: 5270aa01655ee2f4abc5cb8e8a17f77e,
+        type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 1017650754}
     - target: {fileID: 3719083438456264209, guid: 5270aa01655ee2f4abc5cb8e8a17f77e,
         type: 3}
       propertyPath: m_LocalPosition.x

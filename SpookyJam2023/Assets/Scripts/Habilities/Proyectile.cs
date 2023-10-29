@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class Proyectile : MonoBehaviour, IHability
 {
@@ -38,10 +39,20 @@ public class Proyectile : MonoBehaviour, IHability
             return;
         }
 
+        Vector3 enemyPos = collision.transform.position;
+        Vector3 dir = (enemyPos - transform.position).normalized;
+
+        Rigidbody enemyRb = collision.gameObject.GetComponent<Rigidbody>();
+
         enemy.Damage(Mathf.RoundToInt(_statsSO.Damage * GameManager.Instance.UpgradesCurve.Evaluate(UpgradeStats.IndexDamage)));
         GameObject temp = Instantiate(_particlePrefab, transform.position, Quaternion.identity);
         Destroy(temp, 3);
-        Forces.PushObject(collision.collider, _speed, transform.position, _statsSO.Range);
+
+        enemyRb.velocity = Vector3.zero;
+        enemyRb.AddForce(dir * 5, ForceMode.Impulse);
+
+        DOVirtual.Vector3(enemyRb.velocity, Vector3.zero, 1, (Vector3 v) => enemyRb.velocity = v);
+
         Destroy(gameObject);
     }
 
